@@ -189,12 +189,7 @@ function App() {
       collected.includes("carrot")
     ) {
       setResult(true);
-    } else if (
-      collected.includes("banana") &&
-      collected.includes("potato") &&
-      collected.includes("curry") &&
-      collected.includes("carrot")
-    ) {
+    } else {
       setResult(false);
     }
   };
@@ -244,7 +239,11 @@ function App() {
   };
 
   const YouLost = () => {
-    return <div className="recipe-container">The dish is not good enough!</div>;
+    return (
+      <div className="recipe-container">
+        This is interesting! But we have never seen it before...
+      </div>
+    );
   };
 
   return (
