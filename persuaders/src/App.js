@@ -7,6 +7,7 @@ function App() {
   const [collected, setCollected] = useState([]);
   const [cooking, setCooking] = useState(false);
   const [result, setResult] = useState("");
+  const [recipe, setRecipe] = useState("");
   const appleTitle = "A few leftover slices of apple";
   const appleText = "Looks a bit brown, but still perfectly safe to eat.";
   const potatoTitle = "An old potato";
@@ -218,8 +219,19 @@ function App() {
     setClicked(item);
   };
 
+  const ViewRecipe = () => {
+    console.log(images.recipeImg);
+    return (<img id="recipe" src={images.recipeImg} />);
+  };
+
   const YouWon = () => {
-    return <div>The dish is very good and you didn't become a zombie!</div>;
+    return (<div>
+            <p>The dish is very good and you didnt become a zombie!</p>
+            <button onClick={setRecipe(true)} >
+                View Recipe!
+            </button>
+            </div>
+            );
   };
 
   const YouLost = () => {
@@ -248,6 +260,7 @@ function App() {
       ) : null}
       {cooking === true ? <CookPopUp /> : null}
       {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
+      {recipe === true ? <ViewRecipe /> : null}
     </div>
   );
 }

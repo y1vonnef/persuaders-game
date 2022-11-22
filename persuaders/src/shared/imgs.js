@@ -5,6 +5,7 @@ import Potato from "../assets/imgs/Potato.svg";
 import Curry from "../assets/imgs/curry.svg";
 import Carrot from "../assets/imgs/carrot.svg";
 import Banana from "../assets/imgs/banana.svg";
+import Recipe from "../assets/imgs/recipe_book.svg";
 
 const images = {
   potImg: Pot,
@@ -14,6 +15,7 @@ const images = {
   curryImg: Curry,
   carrotImg: Carrot,
   bananaImg: Banana,
+  recipeImg: Recipe,
 };
 
 export default images;
