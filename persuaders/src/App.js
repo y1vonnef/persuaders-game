@@ -225,21 +225,26 @@ function App() {
 
   const ViewRecipe = () => {
     console.log(images.recipeImg);
-    return (<img id="recipe" src={images.Recipe} />);
+    return <img id="recipe" src={images.Recipe} />;
   };
 
   const YouWon = () => {
-    return (<div>
-            <p>The dish is very good and you didnt become a zombie!</p>
-            <button onClick={setRecipe(true)} >
-                View Recipe!
-            </button>
-            </div>
-            );
+    return (
+      <div className="recipe-container">
+        <p>The dish is very good and you didnt become a zombie!</p>
+        <button
+          onClick={() => {
+            setRecipe(true);
+          }}
+        >
+          View Recipe!
+        </button>
+      </div>
+    );
   };
 
   const YouLost = () => {
-    return <div>The dish is not good enough!</div>;
+    return <div className="recipe-container">The dish is not good enough!</div>;
   };
 
   return (

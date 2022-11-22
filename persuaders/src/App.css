@@ -132,3 +132,12 @@
   left: 700px;
 }
 
+.recipe-container {
+  text-align: center;
+  font-size: 30px;
+  background-color: white;
+  position: absolute;
+  width: 90vw;
+  height: 90vh;
+  left: 100px;
+}
