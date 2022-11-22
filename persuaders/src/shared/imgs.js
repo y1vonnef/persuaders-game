@@ -7,13 +7,13 @@ import Carrot from "../assets/imgs/carrot.svg";
 import Banana from "../assets/imgs/banana.svg";
 
 const images = {
-  potImg: Pot,
-  potLitImg: PotLit,
-  appleImg: Apple,
-  potatoImg: Potato,
-  curryImg: Curry,
-  carrotImg: Carrot,
-  bananaImg: Banana,
+  Pot: Pot,
+  PotLit: PotLit,
+  Apple: Apple,
+  Potato: Potato,
+  Curry: Curry,
+  Carrot: Carrot,
+  Banana: Banana,
 };
 
 export default images;

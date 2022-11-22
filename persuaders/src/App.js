@@ -34,6 +34,7 @@ function App() {
         <button
           onClick={() => {
             Select(clicked);
+            setClicked("");
           }}
         >
           Take
@@ -45,13 +46,13 @@ function App() {
   const Apple = () => {
     return (
       <button
-        className="ingredient"
+        className="ingredient apple"
         onClick={() => {
           updateClicked("apple");
           console.log("apple clicked " + clicked);
         }}
       >
-        <img src={images.appleImg} />
+        <img src={images.Apple} />
       </button>
     );
   };
@@ -59,12 +60,12 @@ function App() {
   const Potato = () => {
     return (
       <button
-        className="ingredient"
+        className="ingredient potato"
         onClick={() => {
           updateClicked("potato");
         }}
       >
-        <img src={images.potatoImg} />
+        <img src={images.Potato} />
       </button>
     );
   };
@@ -72,12 +73,12 @@ function App() {
   const Curry = () => {
     return (
       <button
-        className="ingredient"
+        className="ingredient curry"
         onClick={() => {
           updateClicked("curry");
         }}
       >
-        <img src={images.curryImg} />
+        <img src={images.Curry} />
       </button>
     );
   };
@@ -85,12 +86,12 @@ function App() {
   const Carrot = () => {
     return (
       <button
-        className="ingredient"
+        className="ingredient carrot"
         onClick={() => {
           updateClicked("carrot");
         }}
       >
-        <img src={images.carrotImg} />
+        <img src={images.Carrot} />
       </button>
     );
   };
@@ -98,12 +99,12 @@ function App() {
   const Banana = () => {
     return (
       <button
-        className="ingredient"
+        className="ingredient banana"
         onClick={() => {
           updateClicked("banana");
         }}
       >
-        <img src={images.bananaImg} />
+        <img src={images.Banana} />
       </button>
     );
   };
@@ -112,7 +113,7 @@ function App() {
     if (collected.length !== 4) {
       return (
         <div className="cauldron">
-          <img src={images.potImg} />
+          <img src={images.Pot} />
         </div>
       );
     } else {
@@ -123,7 +124,7 @@ function App() {
             setCooking(true);
           }}
         >
-          <img src={images.potLitImg} />
+          <img src={images.PotLit} />
         </div>
       );
     }
@@ -145,34 +146,36 @@ function App() {
     return (
       <>
         <div className="cauldron-cook">
+          <img src={images.PotLit} />
           {ingredientsIn.map((item, index) => {
             return <div key={index}>{item}</div>;
           })}
+          <div className="inventory-container">
+            {collected.map((item, index) => {
+              return (
+                <button
+                  className="inventory"
+                  key={index}
+                  onClick={() => {
+                    moveToPot(item);
+                  }}
+                >
+                  {item}
+                  <img src={images[item]} />
+                </button>
+              );
+            })}
+          </div>
+          {ingredientsIn.length === 4 ? (
+            <button
+              onClick={() => {
+                giveResults();
+              }}
+            >
+              Cook!
+            </button>
+          ) : null}
         </div>
-        <div className="inventory-container">
-          {collected.map((item, index) => {
-            return (
-              <button
-                className="inventory"
-                key={index}
-                onClick={() => {
-                  moveToPot(item);
-                }}
-              >
-                {item}
-              </button>
-            );
-          })}
-        </div>
-        {ingredientsIn.length === 4 ? (
-          <button
-            onClick={() => {
-              giveResults();
-            }}
-          >
-            Cook!
-          </button>
-        ) : null}
       </>
     );
   };
@@ -195,6 +198,7 @@ function App() {
     }
   };
 
+  //TODO display images for inventory
   const Inventory = () => {
     return (
       <div className="inventory-container">
