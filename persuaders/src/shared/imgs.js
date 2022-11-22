@@ -8,14 +8,14 @@ import Banana from "../assets/imgs/banana.svg";
 import Recipe from "../assets/imgs/recipe_book.svg";
 
 const images = {
-  potImg: Pot,
-  potLitImg: PotLit,
-  appleImg: Apple,
-  potatoImg: Potato,
-  curryImg: Curry,
-  carrotImg: Carrot,
-  bananaImg: Banana,
-  recipeImg: Recipe,
+  Pot: Pot,
+  PotLit: PotLit,
+  Apple: Apple,
+  Potato: Potato,
+  Curry: Curry,
+  Carrot: Carrot,
+  Banana: Banana,
+  Recipe: Recipe,
 };
 
 export default images;
