@@ -36,3 +36,50 @@
     transform: rotate(360deg);
   }
 }
+
+.ingredient {
+  border: 1px solid black;
+}
+
+.inventory {
+  border: 1px solid black;
+  height: 80px;
+  width: 80px;
+}
+
+.inventory-container {
+  display: flex;
+  position: absolute;
+  top: 80vh;
+  left: 20vw;
+}
+
+.cauldron {
+  /* width: 100px;
+  height: 200px; */
+  /* border: 1px solid black; */
+  right: 20vw;
+  top: 70vh;
+  position: absolute;
+}
+
+.lightup {
+  background-color: lime;
+}
+
+.cauldron-cook {
+  width: 400px;
+  height: 200px;
+  border-radius: 1000;
+  border: 1px solid black;
+  background-color: lime;
+}
+
+.inspector {
+  border: 1px solid black;
+  z-index: 100;
+  position: absolute;
+  background-color: white;
+  top: 20vh;
+  left: 40vw;
+}
