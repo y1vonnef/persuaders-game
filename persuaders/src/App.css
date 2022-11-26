@@ -39,6 +39,14 @@
   }
 }
 
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .ingredient {
   border: none;
   background-color: transparent;
@@ -85,51 +93,49 @@
 .inspector {
   border: 1px solid black;
   z-index: 100;
-  position: absolute;
   background-color: white;
-  top: 20vh;
-  left: 40vw;
+  padding: 40px;
 }
 
 #recipe {
   z-index: 1000;
   width: 800px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   background: white;
 }
 
-.apple {
+#apple {
   position: absolute;
   left: 100px;
   top: 200px;
+  display: block;
 }
 
-.potato {
+#potato {
   position: absolute;
   top: 280px;
   left: 350px;
+  display: block;
 }
 
-.curry {
+#curry {
   position: absolute;
   top: 360px;
   left: 600px;
+  display: block;
 }
 
-.carrot {
+#carrot {
   position: absolute;
   right: 10px;
   top: 200px;
+  display: block;
 }
 
-.banana {
+#banana {
   position: absolute;
   top: 360px;
   left: 700px;
+  display: block;
 }
 
 .recipe-container {
@@ -140,4 +146,8 @@
   width: 90vw;
   height: 90vh;
   left: 100px;
+}
+
+button {
+  margin: 10px;
 }

@@ -1,4 +1,4 @@
-import { react, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import images from "./shared/imgs";
 
@@ -13,11 +13,11 @@ function App() {
   const potatoTitle = "An old potato";
   const potatoText = "This potato is a bit old, but hasn’t sprouted yet!";
   const curryTitle = "A packet of curry";
-  const curryText = "";
+  const curryText = "Curry is great to have around to cook leftover produce with!";
   const carrotTitle = "Half a carrot..";
   const carrotText = "";
   const bananaTitle = "A bruised banana";
-  const bananaText = "";
+  const bananaText = "We can cut off the brown parts and eat the rest.";
 
   const Select = (item) => {
     let tempCollected = [...collected];
@@ -29,9 +29,17 @@ function App() {
 
   const Popup = (props) => {
     return (
-      <div className="inspector">
+      <div className="center inspector">
+        <img src={props.image} />
         <h1>{props.title}</h1>
         <p>{props.text}</p>
+        <button
+          onClick={() => {
+            setClicked("");
+          }}
+        >
+          Nevermind
+        </button>
         <button
           onClick={() => {
             Select(clicked);
@@ -47,7 +55,8 @@ function App() {
   const Apple = () => {
     return (
       <button
-        className="ingredient apple"
+        className="ingredient"
+        id="apple"
         onClick={() => {
           updateClicked("apple");
           console.log("apple clicked " + clicked);
@@ -61,7 +70,8 @@ function App() {
   const Potato = () => {
     return (
       <button
-        className="ingredient potato"
+        className="ingredient"
+        id="potato"
         onClick={() => {
           updateClicked("potato");
         }}
@@ -74,7 +84,8 @@ function App() {
   const Curry = () => {
     return (
       <button
-        className="ingredient curry"
+        className="ingredient"
+        id="curry"
         onClick={() => {
           updateClicked("curry");
         }}
@@ -87,7 +98,8 @@ function App() {
   const Carrot = () => {
     return (
       <button
-        className="ingredient carrot"
+        className="ingredient"
+        id="carrot"
         onClick={() => {
           updateClicked("carrot");
         }}
@@ -100,7 +112,8 @@ function App() {
   const Banana = () => {
     return (
       <button
-        className="ingredient banana"
+        className="ingredient"
+        id="banana"
         onClick={() => {
           updateClicked("banana");
         }}
@@ -220,7 +233,7 @@ function App() {
 
   const ViewRecipe = () => {
     console.log(images.recipeImg);
-    return <img id="recipe" src={images.Recipe} />;
+    return <img class="center" id="recipe" src={images.Recipe} />;
   };
 
   const YouWon = () => {
@@ -255,16 +268,16 @@ function App() {
       <Banana />
       <Cauldron />
       <Inventory />
-      {clicked == "apple" ? (
-        <Popup title={appleTitle} text={appleText} />
-      ) : clicked == "potato" ? (
-        <Popup title={potatoTitle} text={potatoText} />
-      ) : clicked == "curry" ? (
-        <Popup title={curryTitle} text={curryText} />
-      ) : clicked == "carrot" ? (
-        <Popup title={carrotTitle} text={carrotText} />
-      ) : clicked == "banana" ? (
-        <Popup title={bananaTitle} text={bananaText} />
+      {clicked === "apple" ? (
+        <Popup image={images.Apple} title={appleTitle} text={appleText} />
+      ) : clicked === "potato" ? (
+        <Popup image={images.Potato} title={potatoTitle} text={potatoText} />
+      ) : clicked === "curry" ? (
+        <Popup image={images.Curry} title={curryTitle} text={curryText} />
+      ) : clicked === "carrot" ? (
+        <Popup image={images.Carrot} title={carrotTitle} text={carrotText} />
+      ) : clicked === "banana" ? (
+        <Popup image={images.Banana} title={bananaTitle} text={bananaText} />
       ) : null}
       {cooking === true ? <CookPopUp /> : null}
       {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
