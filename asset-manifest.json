@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/persuaders-game/static/css/main.a70cff09.css",
-    "main.js": "/persuaders-game/static/js/main.2f1fc7e9.js",
+    "main.css": "/persuaders-game/static/css/main.923dee97.css",
+    "main.js": "/persuaders-game/static/js/main.df192c1c.js",
     "static/js/787.2d9da9c2.chunk.js": "/persuaders-game/static/js/787.2d9da9c2.chunk.js",
     "static/media/recipe_book.svg": "/persuaders-game/static/media/recipe_book.a7ee882f420ca982a1207a1b3319c788.svg",
     "static/media/environment_closed_doors.jpg": "/persuaders-game/static/media/environment_closed_doors.f0b3b51f6586ca495d70.jpg",
@@ -13,12 +13,12 @@
     "static/media/carrot.svg": "/persuaders-game/static/media/carrot.ba7cb62007d0f3c081eeb10bb8eaec89.svg",
     "static/media/pot_lit.svg": "/persuaders-game/static/media/pot_lit.8dc26b947640db5a1be9ed5b837e76ee.svg",
     "static/media/pot_normal.svg": "/persuaders-game/static/media/pot_normal.043cfe7a2e3d896ac8b2fd443b96eb96.svg",
-    "main.a70cff09.css.map": "/persuaders-game/static/css/main.a70cff09.css.map",
-    "main.2f1fc7e9.js.map": "/persuaders-game/static/js/main.2f1fc7e9.js.map",
+    "main.923dee97.css.map": "/persuaders-game/static/css/main.923dee97.css.map",
+    "main.df192c1c.js.map": "/persuaders-game/static/js/main.df192c1c.js.map",
     "787.2d9da9c2.chunk.js.map": "/persuaders-game/static/js/787.2d9da9c2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a70cff09.css",
-    "static/js/main.2f1fc7e9.js"
+    "static/css/main.923dee97.css",
+    "static/js/main.df192c1c.js"
   ]
 }
