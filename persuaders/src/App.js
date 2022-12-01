@@ -124,7 +124,7 @@ function App() {
             })}
           </div>
           {ingredientsIn.length === 4 ? (
-            <button
+            <button id="cook-inventory"
               onClick={() => {
                 giveResults();
               }}
