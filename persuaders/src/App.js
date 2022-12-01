@@ -1,148 +1,92 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import images from "./shared/imgs";
+import Ingredient from './Ingredient.js';
+import Storage from './Storage.js';
 
 function App() {
-  const [clicked, setClicked] = useState("");
   const [collected, setCollected] = useState([]);
   const [cooking, setCooking] = useState(false);
   const [result, setResult] = useState("");
   const [recipe, setRecipe] = useState("");
-  const appleTitle = "A few leftover slices of apple";
-  const appleText = "Looks a bit brown, but still perfectly safe to eat.";
-  const potatoTitle = "An old potato";
-  const potatoText = "This potato is a bit old, but hasn’t sprouted yet!";
-  const curryTitle = "A packet of curry";
-  const curryText = "Curry is great to have around to cook leftover produce with!";
-  const carrotTitle = "Half a carrot..";
-  const carrotText = "";
-  const bananaTitle = "A bruised banana";
-  const bananaText = "We can cut off the brown parts and eat the rest.";
 
-  const Select = (item) => {
-    let tempCollected = [...collected];
-    if (tempCollected.length < 4 && !tempCollected.includes(item)) {
-      tempCollected.push(item);
-    }
-    setCollected(tempCollected);
-  };
+  const [curryStorage] = React.useState([{
+                                         name: "fridge",
+                                         open: images.CurryFridgeOpen,
+                                         closed: images.CurryFridge,
+                                         x: "-10px",
+                                         y: "63px",
+                                         width: "400px",
+                                         ingredients: ["apple"],
+                                       },
+                                       {
+                                         name: "lower_cabinet",
+                                         open: images.CurryLowerCabinetOpen,
+                                         closed: images.CurryLowerCabinet,
+                                         x: "775px",
+                                         y: "347px",
+                                         width: "400px",
+                                         ingredients: ["potato"],
+                                       },
+                                       {
+                                         name: "sink",
+                                         open: images.CurrySinkOpen,
+                                         closed: images.CurrySink,
+                                         x: "460px",
+                                         y: "229px",
+                                         width: "412px",
+                                         ingredients: ["curry"],
+                                       },
+                                       {
+                                         name: "upper_cabinet",
+                                         open: images.CurryUpperCabinetOpen,
+                                         closed: images.CurryUpperCabinet,
+                                         x: "477px",
+                                         y: "44px",
+                                         width: "340px",
+                                         ingredients: ["carrot"],
+                                       }]);
 
-  const Popup = (props) => {
-    return (
-      <div className="center inspector">
-        <img src={props.image} />
-        <h1>{props.title}</h1>
-        <p>{props.text}</p>
-        <button
-          onClick={() => {
-            setClicked("");
-          }}
-        >
-          Nevermind
-        </button>
-        <button
-          onClick={() => {
-            Select(clicked);
-            setClicked("");
-          }}
-        >
-          Take
-        </button>
-      </div>
-    );
-  };
-
-  const Apple = () => {
-    return (
-      <button
-        className="ingredient"
-        id="apple"
-        onClick={() => {
-          updateClicked("apple");
-          console.log("apple clicked " + clicked);
-        }}
-      >
-        <img src={images.Apple} />
-      </button>
-    );
-  };
-
-  const Potato = () => {
-    return (
-      <button
-        className="ingredient"
-        id="potato"
-        onClick={() => {
-          updateClicked("potato");
-        }}
-      >
-        <img src={images.Potato} />
-      </button>
-    );
-  };
-
-  const Curry = () => {
-    return (
-      <button
-        className="ingredient"
-        id="curry"
-        onClick={() => {
-          updateClicked("curry");
-        }}
-      >
-        <img src={images.Curry} />
-      </button>
-    );
-  };
-
-  const Carrot = () => {
-    return (
-      <button
-        className="ingredient"
-        id="carrot"
-        onClick={() => {
-          updateClicked("carrot");
-        }}
-      >
-        <img src={images.Carrot} />
-      </button>
-    );
-  };
-
-  const Banana = () => {
-    return (
-      <button
-        className="ingredient"
-        id="banana"
-        onClick={() => {
-          updateClicked("banana");
-        }}
-      >
-        <img src={images.Banana} />
-      </button>
-    );
-  };
-
-  const Cauldron = () => {
-    if (collected.length !== 4) {
-      return (
-        <div className="cauldron">
-          <img src={images.Pot} />
-        </div>
-      );
-    } else {
-      return (
-        <div
-          className="lightup cauldron"
-          onClick={() => {
-            setCooking(true);
-          }}
-        >
-          <img src={images.PotLit} />
-        </div>
-      );
-    }
-  };
+  const [curryIngredients] = React.useState([{
+                                              name: "apple",
+                                              image: images.Apple,
+                                              x: "100px",
+                                              y: "185px",
+                                              title: "A few leftover slices of apple",
+                                              text: "Looks a bit brown, but still perfectly safe to eat.",
+                                             },
+                                             {
+                                              name: "potato",
+                                              image: images.Potato,
+                                              x: "870px",
+                                              y: "426px",
+                                              title: "An old potato",
+                                              text: "This potato is a bit old, but hasn’t sprouted yet!",
+                                             },
+                                             {
+                                              name: "curry",
+                                              image: images.Curry,
+                                              x: "524px",
+                                              y: "404px",
+                                              title: "A packet of curry",
+                                              text: "Curry is great to have around to cook leftover produce with!",
+                                             },
+                                             {
+                                              name: "carrot",
+                                              image: images.Carrot,
+                                              x: "599px",
+                                              y: "127px",
+                                              title: "Half a carrot..",
+                                              text: "",
+                                             },
+                                             {
+                                              name: "banana",
+                                              image: images.Banana,
+                                              x: "720px",
+                                              y: "246px",
+                                              title: "A bruised banana",
+                                              text: "We can cut off the brown parts and eat the rest.",
+                                             }]);
 
   const [ingredientsIn, setIngredients] = useState([]);
 
@@ -162,7 +106,7 @@ function App() {
         <div className="cauldron-cook">
           <img src={images.PotLit} />
           {ingredientsIn.map((item, index) => {
-            return <div key={index}>{item}</div>;
+            return <div key={index}><img src={item} /></div>;
           })}
           <div className="inventory-container">
             {collected.map((item, index) => {
@@ -174,8 +118,7 @@ function App() {
                     moveToPot(item);
                   }}
                 >
-                  {item}
-                  <img src={images[item]} />
+                  <img src={item} />
                 </button>
               );
             })}
@@ -196,39 +139,15 @@ function App() {
 
   const giveResults = () => {
     if (
-      collected.includes("apple") &&
-      collected.includes("potato") &&
-      collected.includes("curry") &&
-      collected.includes("carrot")
+      collected.includes(images.Apple) &&
+      collected.includes(images.Potato) &&
+      collected.includes(images.Curry) &&
+      collected.includes(images.Carrot)
     ) {
       setResult(true);
     } else {
       setResult(false);
     }
-  };
-
-  //TODO display images for inventory
-  const Inventory = () => {
-    return (
-      <div className="inventory-container">
-        <div className="inventory">
-          {collected[0] !== undefined ? collected[0] : null}
-        </div>
-        <div className="inventory">
-          {collected[1] !== undefined ? collected[1] : null}
-        </div>
-        <div className="inventory">
-          {collected[2] !== undefined ? collected[2] : null}
-        </div>
-        <div className="inventory">
-          {collected[3] !== undefined ? collected[3] : null}
-        </div>
-      </div>
-    );
-  };
-
-  const updateClicked = (item) => {
-    setClicked(item);
   };
 
   const ViewRecipe = () => {
@@ -259,29 +178,114 @@ function App() {
     );
   };
 
+  const Inventory = () => {
+    return (
+      <div className="inventory-container">
+        <div className="inventory">
+          {collected[0] !== undefined ? collected[0] : null}
+        </div>
+        <div className="inventory">
+          {collected[1] !== undefined ? collected[1] : null}
+        </div>
+        <div className="inventory">
+          {collected[2] !== undefined ? collected[2] : null}
+        </div>
+        <div className="inventory">
+          {collected[3] !== undefined ? collected[3] : null}
+        </div>
+      </div>
+    );
+  };
+
+  const storageClick = (name, ingredients) => {
+    console.log(name);
+    document.getElementById(name).style.display="none";
+    document.getElementById(name + "_open").style.display="block";
+    for (let i=0; i < ingredients.length; i++) {
+        console.log(document.getElementById(ingredients[i]));
+        document.getElementById(ingredients[i]).style.display="block";
+    }
+  }
+
+  const openPopup = (name) => {
+    document.getElementById(name + "_popup").style.display = "block";
+  }
+
+  const nevermind = (name) => {
+    document.getElementById(name + "_popup").style.display = "none";
+  }
+
+  const take = (name, image) => {
+    document.getElementById(name).style.display="none";
+    let tempCollected = [...collected];
+    if (tempCollected.length < 4 && !tempCollected.includes(image)) {
+      tempCollected.push(image);
+    }
+    setCollected(tempCollected);
+    nevermind(name);
+  }
+
+  const Cauldron = () => {
+    if (collected.length !== 4) {
+      return (
+        <div className="cauldron">
+          <img id="cauldron-img" src={images.Pot} />
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="lightup cauldron"
+          onClick={() => {
+            setCooking(true);
+          }}
+        >
+          <img id="cauldron-img" src={images.PotLit} />
+        </div>
+      );
+    }
+  };
+
   return (
-    <div className="App">
-      <Apple />
-      <Potato />
-      <Curry />
-      <Carrot />
-      <Banana />
-      <Cauldron />
-      <Inventory />
-      {clicked === "apple" ? (
-        <Popup image={images.Apple} title={appleTitle} text={appleText} />
-      ) : clicked === "potato" ? (
-        <Popup image={images.Potato} title={potatoTitle} text={potatoText} />
-      ) : clicked === "curry" ? (
-        <Popup image={images.Curry} title={curryTitle} text={curryText} />
-      ) : clicked === "carrot" ? (
-        <Popup image={images.Carrot} title={carrotTitle} text={carrotText} />
-      ) : clicked === "banana" ? (
-        <Popup image={images.Banana} title={bananaTitle} text={bananaText} />
-      ) : null}
-      {cooking === true ? <CookPopUp /> : null}
-      {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
-      {recipe === true ? <ViewRecipe /> : null}
+    <div>
+        <img id="background-img" src={images.EnvHiro} />
+        <div className="App">
+          {/*
+          <img id="background-img" src={images.EnvMatt} />
+          <Storage name="fridge" open={images.FridgeOpen} closed={images.Fridge} x="180px" y="175px" width="290px" />
+          <Storage name="cabinet" open={images.CabinetOpen} closed={images.Cabinet} x="650px" y="100px" width="180px" />
+          <Storage name="kitchen_sink" open={images.KitchenSinkOpen} closed={images.KitchenSink} x="570px" y="332px" width="330px" />
+          <Storage name="large_cabinet" open={images.LargeCabinetOpen} closed={images.LargeCabinet} x="900px" y="64px" width="340px" />
+          */}
+          <div className="inventory-container">
+              <div className="inventory">
+                {collected[0] !== undefined ? <img src={collected[0]} />  : null}
+              </div>
+              <div className="inventory">
+                {collected[1] !== undefined ? <img src={collected[1]} /> : null}
+              </div>
+              <div className="inventory">
+                {collected[2] !== undefined ? <img src={collected[2]} /> : null}
+              </div>
+              <div className="inventory">
+                {collected[3] !== undefined ? <img src={collected[3]} /> : null}
+              </div>
+          </div>
+          {curryStorage.map(
+           (s, idx) => {
+            return <Storage key={idx} name={s.name} open={s.open} closed={s.closed} x={s.x} y={s.y} width={s.width} storageClick={storageClick} ingredients={s.ingredients} />;
+           }
+          )}
+          {curryIngredients.map(
+           (i, idx) => {
+            return <Ingredient key={i.name} name={i.name} image={i.image} x={i.x} y={i.y} openPopup={openPopup} nevermind={nevermind} take={take} title={i.title} text={i.text} />;
+           }
+          )}
+          <Cauldron />
+          {cooking === true ? <CookPopUp /> : null}
+          {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
+          {recipe === true ? <ViewRecipe /> : null}
+        </div>
     </div>
   );
 }
