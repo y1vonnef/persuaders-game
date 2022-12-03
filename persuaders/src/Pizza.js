@@ -9,9 +9,13 @@ const Pizza = {
     top: images.PotTop,
     x: "585px",
     y: "273px",
-    width: "185px"
+    width: "185px",
   },
   winningRecipe: [images.Takeout, images.Tomato, images.Dough, images.Cheese],
+  winMsg:
+    "YES! Emma is healed by the pizza! She loves pizza and remembers fond memories of her human life… Hey, you are a creative chef! What a cool idea to make a dish using leftover chicken stir fry!",
+  failMsg:
+    "Eww… zombie Emma does not like rotten pepperoni nor the old pumpkin either. Watch out, she may come after you now!",
   character: {
     name: "Emma",
     human: images.EmmaHuman,

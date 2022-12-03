@@ -12,6 +12,10 @@ const Curry = {
     width: "185px",
   },
   winningRecipe: [images.Apple, images.Carrot, images.Potato, images.Curry],
+  winMsg:
+    "Hiro is saved! While eating this dish, he fought the zombie contagion as he recollected the warm memories of his childhood. Great job using up leftover ingredients before they went bad!",
+  failMsg:
+    "That’s an interesting combination of food ingredients, but this doesn’t seem to match Hiro's mom’s recipe. He is unfortunately still a zombie. But hey, at least he got nutrients to last him longer, increasing his chances to return to the human form!",
   character: {
     name: "Hiro",
     human: images.HiroHuman,
@@ -71,17 +75,16 @@ const Curry = {
       x: "100px",
       y: "185px",
       title: "A few leftover slices of apple",
-      text: "Looks a bit brown, but still perfectly safe to eat.",
+      text: "Looks a bit brown, but perfectly safe to eat! It's known to brighten certain dishes.",
     },
     {
       name: "potato",
       image: images.Potato,
       imageMag: images.Potato,
-
       x: "870px",
       y: "426px",
       title: "An old potato",
-      text: "This potato is a bit old, but hasn’t sprouted yet!",
+      text: "This potato has been there for a while. But it hasn't sprouted yet and it isn't mushy...if I chop and boil it, the potato will be safe to eat!",
     },
     {
       name: "curry",
@@ -90,8 +93,8 @@ const Curry = {
 
       x: "524px",
       y: "404px",
-      title: "A packet of curry",
-      text: "Curry is great to have around to cook leftover produce with!",
+      title: "A forgotten packet of curry",
+      text: "Popular in Asian cuisines, adds delicious spice and flavor to dishes. If left unopened, it can last a while. This one hasn't spoiled yet!",
     },
     {
       name: "carrot",
@@ -101,7 +104,7 @@ const Curry = {
       x: "599px",
       y: "127px",
       title: "Half a carrot..",
-      text: "",
+      text: "Looks like they only used part of it, there's still plenty left I can use to cook with!",
     },
     {
       name: "banana",

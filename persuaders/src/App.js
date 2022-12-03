@@ -33,7 +33,7 @@ function App() {
     Array(current.inventorySize).fill(0)
   );
 
-  const [characterStatus, setCharacterStatus] = useState("halfZombie");
+  const [characterStatus, setCharacterStatus] = useState("zombie");
 
   const [ingredientsIn, setIngredients] = useState([]);
 
@@ -105,8 +105,10 @@ function App() {
     setCooking(false);
     if (areEqual(collected, current.winningRecipe)) {
       setResult(true);
+      setCharacterStatus("human");
     } else {
       setResult(false);
+      setCharacterStatus("halfZombie");
     }
   };
 
@@ -116,24 +118,34 @@ function App() {
 
   const YouWon = () => {
     return (
-      <div className="recipe-container ">
-        <p>The dish is very good and you didnt become a zombie!</p>
-        <button
-          onClick={() => {
-            setRecipe(true);
-          }}
-        >
-          View Recipe!
-        </button>
-      </div>
+      <>
+        <img
+          className="character popup-character"
+          src={current.character.human}
+        />
+        <div className="recipe-container ">
+          <p>{current.winMsg}</p>
+          <button
+            onClick={() => {
+              setRecipe(true);
+            }}
+          >
+            View Recipe!
+          </button>
+        </div>
+      </>
     );
   };
 
   const YouLost = () => {
     return (
-      <div className="recipe-container ">
-        This is interesting! But we have never seen it before...
-      </div>
+      <>
+        <img
+          className="character popup-character"
+          src={current.character.halfZombie}
+        />
+        <div className="recipe-container ">{current.failMsg}</div>
+      </>
     );
   };
 
@@ -178,8 +190,15 @@ function App() {
   const Cauldron = () => {
     if (collected.length !== current.inventorySize) {
       return (
-        <div className="cauldron" style={{ left: current.cook.x, top: current.cook.y }}>
-          <img id="cauldron-img" src={current.cook.unlit} style={{ width: current.cook.width }} />
+        <div
+          className="cauldron"
+          style={{ left: current.cook.x, top: current.cook.y }}
+        >
+          <img
+            id="cauldron-img"
+            src={current.cook.unlit}
+            style={{ width: current.cook.width }}
+          />
         </div>
       );
     } else {
@@ -189,9 +208,13 @@ function App() {
           onClick={() => {
             setCooking(true);
           }}
-          style={{ left: current.cook.x, top: current.cook.y}}
+          style={{ left: current.cook.x, top: current.cook.y }}
         >
-          <img id="cauldron-img" src={current.cook.lit} style={{ width: current.cook.width }} />
+          <img
+            id="cauldron-img"
+            src={current.cook.lit}
+            style={{ width: current.cook.width }}
+          />
         </div>
       );
     }

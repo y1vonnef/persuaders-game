@@ -181,6 +181,13 @@ button {
   z-index: 10;
 }
 
+.popup-character {
+  z-index: 101;
+  width: 300px;
+  top: 220px;
+  left: 620px;
+}
+
 .narrative {
   position: absolute;
   z-index: 100;
