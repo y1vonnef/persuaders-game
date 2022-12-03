@@ -1,5 +1,6 @@
 import Pot from "../assets/imgs/pot_normal.svg";
 import PotLit from "../assets/imgs/pot_lit.svg";
+import PotTopLit from "../assets/imgs/pot_top_lit.svg";
 
 //Curry
 import EnvHiro from "../assets/imgs/curry/environment_hiro.svg";
@@ -25,19 +26,27 @@ import Recipe from "../assets/imgs/curry/recipe_book.svg";
 
 //Salad
 import EnvMatt from "../assets/imgs/salad/environment_matt.svg";
-import Cabinet from "../assets/imgs/salad/cabinet.svg";
-import Fridge from "../assets/imgs/salad/fridge.svg";
-import KitchenSink from "../assets/imgs/salad/kitchen_sink.svg";
-import LargeCabinet from "../assets/imgs/salad/large_cabinet.svg";
-import CabinetOpen from "../assets/imgs/salad/cabinet_open.svg";
-import FridgeOpen from "../assets/imgs/salad/fridge_open.svg";
-import KitchenSinkOpen from "../assets/imgs/salad/kitchen_sink_open.svg";
-import LargeCabinetOpen from "../assets/imgs/salad/large_cabinet_open.svg";
+import SaladCabinet from "../assets/imgs/salad/cabinet.svg";
+import SaladFridge from "../assets/imgs/salad/fridge.svg";
+import SaladSink from "../assets/imgs/salad/kitchen_sink.svg";
+import SaladLargeCabinet from "../assets/imgs/salad/large_cabinet.svg";
+import SaladCabinetOpen from "../assets/imgs/salad/cabinet_open.svg";
+import SaladFridgeOpen from "../assets/imgs/salad/fridge_open.svg";
+import SaladSinkOpen from "../assets/imgs/salad/kitchen_sink_open.svg";
+import SaladLargeCabinetOpen from "../assets/imgs/salad/large_cabinet_open.svg";
+import Eggs from "../assets/imgs/salad/eggs.svg";
+import Honey from "../assets/imgs/salad/honey.svg";
+import Kiwi from "../assets/imgs/salad/kiwi.svg";
+import Oil from "../assets/imgs/salad/oil.svg";
+import Spinach from "../assets/imgs/salad/spinach.svg";
+import Vinegar from "../assets/imgs/salad/vinegar.svg";
+import Bread from "../assets/imgs/salad/bread.svg";
 
 
 const images = {
   Pot: Pot,
   PotLit: PotLit,
+  PotTopLit: PotTopLit,
   Apple: Apple,
   Potato: Potato,
   Curry: Curry,
@@ -58,14 +67,21 @@ const images = {
   CurryUpperCabinetOpen: CurryUpperCabinetOpen,
   CurryUpperCabinetDoor: CurryUpperCabinetDoor,
   EnvMatt: EnvMatt,
-  Cabinet: Cabinet,
-  Fridge: Fridge,
-  KitchenSink: KitchenSink,
-  LargeCabinet: LargeCabinet,
-  CabinetOpen: CabinetOpen,
-  FridgeOpen: FridgeOpen,
-  KitchenSinkOpen: KitchenSinkOpen,
-  LargeCabinetOpen: LargeCabinetOpen,
+  SaladCabinet: SaladCabinet,
+  SaladFridge: SaladFridge,
+  SaladSink: SaladSink,
+  SaladLargeCabinet: SaladLargeCabinet,
+  SaladCabinetOpen: SaladCabinetOpen,
+  SaladFridgeOpen: SaladFridgeOpen,
+  SaladSinkOpen: SaladSinkOpen,
+  SaladLargeCabinetOpen: SaladLargeCabinetOpen,
+  Eggs: Eggs,
+  Honey: Honey,
+  Kiwi: Kiwi,
+  Oil: Oil,
+  Spinach: Spinach,
+  Vinegar: Vinegar,
+  Bread: Bread
 };
 
 export default images;

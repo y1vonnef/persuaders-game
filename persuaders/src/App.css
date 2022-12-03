@@ -81,6 +81,13 @@
   left: 1px;
 }
 
+.cooking-inventory-container {
+  display: flex;
+  position: absolute;
+  top: 670px;
+  left: 10px;
+}
+
 .cauldron {
   left: 618px;
   top: 273px;

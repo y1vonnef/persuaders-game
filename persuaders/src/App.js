@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import {saladBackground, saladIngredients, saladStorage} from "./Salad.js";
+import {curryBackground, curryIngredients, curryStorage} from "./Curry.js";
 import images from "./shared/imgs";
 import Ingredient from './Ingredient.js';
 import Storage from './Storage.js';
@@ -9,84 +11,7 @@ function App() {
   const [cooking, setCooking] = useState(false);
   const [result, setResult] = useState("");
   const [recipe, setRecipe] = useState("");
-
-  const [curryStorage] = React.useState([{
-                                         name: "fridge",
-                                         open: images.CurryFridgeOpen,
-                                         closed: images.CurryFridge,
-                                         x: "-10px",
-                                         y: "63px",
-                                         width: "400px",
-                                         ingredients: ["apple"],
-                                       },
-                                       {
-                                         name: "lower_cabinet",
-                                         open: images.CurryLowerCabinetOpen,
-                                         closed: images.CurryLowerCabinet,
-                                         x: "775px",
-                                         y: "347px",
-                                         width: "400px",
-                                         ingredients: ["potato"],
-                                       },
-                                       {
-                                         name: "sink",
-                                         open: images.CurrySinkOpen,
-                                         closed: images.CurrySink,
-                                         x: "460px",
-                                         y: "229px",
-                                         width: "412px",
-                                         ingredients: ["curry"],
-                                       },
-                                       {
-                                         name: "upper_cabinet",
-                                         open: images.CurryUpperCabinetOpen,
-                                         closed: images.CurryUpperCabinet,
-                                         x: "477px",
-                                         y: "44px",
-                                         width: "340px",
-                                         ingredients: ["carrot"],
-                                       }]);
-
-  const [curryIngredients] = React.useState([{
-                                              name: "apple",
-                                              image: images.Apple,
-                                              x: "100px",
-                                              y: "185px",
-                                              title: "A few leftover slices of apple",
-                                              text: "Looks a bit brown, but still perfectly safe to eat.",
-                                             },
-                                             {
-                                              name: "potato",
-                                              image: images.Potato,
-                                              x: "870px",
-                                              y: "426px",
-                                              title: "An old potato",
-                                              text: "This potato is a bit old, but hasn’t sprouted yet!",
-                                             },
-                                             {
-                                              name: "curry",
-                                              image: images.Curry,
-                                              x: "524px",
-                                              y: "404px",
-                                              title: "A packet of curry",
-                                              text: "Curry is great to have around to cook leftover produce with!",
-                                             },
-                                             {
-                                              name: "carrot",
-                                              image: images.Carrot,
-                                              x: "599px",
-                                              y: "127px",
-                                              title: "Half a carrot..",
-                                              text: "",
-                                             },
-                                             {
-                                              name: "banana",
-                                              image: images.Banana,
-                                              x: "720px",
-                                              y: "246px",
-                                              title: "A bruised banana",
-                                              text: "We can cut off the brown parts and eat the rest.",
-                                             }]);
+  const [current, setCurrent] = useState([{background: saladBackground, storage: saladStorage, ingredients: saladIngredients}]);
 
   const [ingredientsIn, setIngredients] = useState([]);
 
@@ -108,10 +33,10 @@ function App() {
           {ingredientsIn.map((item, index) => {
             return <div key={index}><img src={item} /></div>;
           })}
-          <div className="inventory-container">
+          <div className="cooking-inventory-container">
             {collected.map((item, index) => {
               return (
-                <button
+                <button id="cook-inventory"
                   className="inventory"
                   key={index}
                   onClick={() => {
@@ -124,7 +49,7 @@ function App() {
             })}
           </div>
           {ingredientsIn.length === 4 ? (
-            <button id="cook-inventory"
+            <button
               onClick={() => {
                 giveResults();
               }}
@@ -178,23 +103,14 @@ function App() {
     );
   };
 
-  const Inventory = () => {
-    return (
-      <div className="inventory-container">
-        <div className="inventory">
-          {collected[0] !== undefined ? collected[0] : null}
-        </div>
-        <div className="inventory">
-          {collected[1] !== undefined ? collected[1] : null}
-        </div>
-        <div className="inventory">
-          {collected[2] !== undefined ? collected[2] : null}
-        </div>
-        <div className="inventory">
-          {collected[3] !== undefined ? collected[3] : null}
-        </div>
-      </div>
-    );
+  const SetUp = () => {
+    if (current === "curry") {
+
+    } else if (current === "salad") {
+
+    } else {
+
+    }
   };
 
   const storageClick = (name, ingredients) => {
@@ -248,15 +164,8 @@ function App() {
 
   return (
     <div>
-        <img id="background-img" src={images.EnvHiro} />
+        <img id="background-img" src={current[0].background} />
         <div className="App">
-          {/*
-          <img id="background-img" src={images.EnvMatt} />
-          <Storage name="fridge" open={images.FridgeOpen} closed={images.Fridge} x="180px" y="175px" width="290px" />
-          <Storage name="cabinet" open={images.CabinetOpen} closed={images.Cabinet} x="650px" y="100px" width="180px" />
-          <Storage name="kitchen_sink" open={images.KitchenSinkOpen} closed={images.KitchenSink} x="570px" y="332px" width="330px" />
-          <Storage name="large_cabinet" open={images.LargeCabinetOpen} closed={images.LargeCabinet} x="900px" y="64px" width="340px" />
-          */}
           <div className="inventory-container">
               <div className="inventory">
                 {collected[0] !== undefined ? <img src={collected[0]} />  : null}
@@ -271,12 +180,12 @@ function App() {
                 {collected[3] !== undefined ? <img src={collected[3]} /> : null}
               </div>
           </div>
-          {curryStorage.map(
+          {current[0].storage.map(
            (s, idx) => {
             return <Storage key={idx} name={s.name} open={s.open} closed={s.closed} x={s.x} y={s.y} width={s.width} storageClick={storageClick} ingredients={s.ingredients} />;
            }
           )}
-          {curryIngredients.map(
+          {current[0].ingredients.map(
            (i, idx) => {
             return <Ingredient key={i.name} name={i.name} image={i.image} x={i.x} y={i.y} openPopup={openPopup} nevermind={nevermind} take={take} title={i.title} text={i.text} />;
            }
