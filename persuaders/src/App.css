@@ -112,9 +112,11 @@
 .inspector {
   border: 1px solid black;
   z-index: 100;
-  background-color: white;
   padding: 40px;
   display: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: white 5px solid;
+  border-radius: 8px;
 }
 
 .inspector button {
@@ -165,7 +167,7 @@ button {
   position: absolute;
   z-index: 100;
   background-color: rgba(255, 255, 255, 0.8);
-  border: white 3px solid;
+  border: white 5px solid;
   padding: 20px;
   border-radius: 8px;
   bottom: 100px;

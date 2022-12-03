@@ -1,6 +1,7 @@
 import images from "./shared/imgs";
 
 const Pizza = {
+  inventorySize: 4,
   character: {
     name: "Emma",
     human: images.EmmaHuman,
