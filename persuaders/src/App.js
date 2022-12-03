@@ -3,7 +3,6 @@ import "./App.css";
 import images from "./shared/imgs";
 import Ingredient from "./Ingredient.js";
 import Storage from "./Storage.js";
-import Character from "./Character.js";
 import Story from "./Story.js";
 import Pizza from "./Pizza.js";
 
