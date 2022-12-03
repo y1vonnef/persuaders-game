@@ -2,6 +2,7 @@ import images from "./shared/imgs";
 
 const Salad = {
   environment: images.EnvMatt,
+  inventorySize: 6,
   character: {
     name: "Matt",
     human: images.MattHuman,

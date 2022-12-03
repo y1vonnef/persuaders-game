@@ -2,6 +2,7 @@ import images from "./shared/imgs";
 
 const Pizza = {
   environment: images.EnvRoommate,
+  inventorySize: 4,
   character: {
     name: "Emma",
     human: images.EmmaHuman,

@@ -70,7 +70,7 @@ function App() {
               );
             })}
           </div>
-          {ingredientsIn.length === 4 ? (
+          {ingredientsIn.length === Pizza.inventorySize ? (
             <button
               id="cook-inventory"
               onClick={() => {

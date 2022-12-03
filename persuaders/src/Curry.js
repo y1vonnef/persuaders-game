@@ -2,6 +2,7 @@ import images from "./shared/imgs";
 
 const Curry = {
   environment: images.EnvHiro,
+  inventorySize: 4,
   character: {
     name: "Hiro",
     human: images.HiroHuman,
