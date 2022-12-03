@@ -19,8 +19,6 @@ const pizzaLevel = {
 };
 
 function App() {
-  const [collected, setCollected] = useState([]);
-
   const [cooking, setCooking] = useState(false);
 
   const [result, setResult] = useState("");
@@ -28,6 +26,11 @@ function App() {
   const [recipe, setRecipe] = useState("");
 
   const [current, setCurrent] = useState(Salad);
+
+  const [collected, setCollected] = useState([]);
+  const [emptyInventory, setEmptyInventory] = useState(
+    Array(current.inventorySize).fill(0)
+  );
 
   const [characterStatus, setCharacterStatus] = useState("halfZombie");
 
@@ -58,7 +61,8 @@ function App() {
           <div className="cooking-inventory-container">
             {collected.map((item, index) => {
               return (
-                <button id="cook-inventory"
+                <button
+                  id="cook-inventory"
                   className="inventory"
                   key={index}
                   onClick={() => {
@@ -70,7 +74,7 @@ function App() {
               );
             })}
           </div>
-          {ingredientsIn.length === Pizza.inventorySize ? (
+          {ingredientsIn.length === current.inventorySize ? (
             <button
               id="cook-inventory"
               onClick={() => {
@@ -85,13 +89,24 @@ function App() {
     );
   };
 
+  function areEqual(array1, array2) {
+    console.log(array1);
+    console.log(array2);
+
+    if (array1.length === array2.length) {
+      return array1.every((element) => {
+        if (array2.includes(element)) {
+          return true;
+        }
+
+        return false;
+      });
+    }
+  }
+
   const giveResults = () => {
-    if (
-      collected.includes(images.Apple) &&
-      collected.includes(images.Potato) &&
-      collected.includes(images.Curry) &&
-      collected.includes(images.Carrot)
-    ) {
+    setCooking(false);
+    if (areEqual(collected, current.winningRecipe)) {
       setResult(true);
     } else {
       setResult(false);
@@ -105,7 +120,7 @@ function App() {
 
   const YouWon = () => {
     return (
-      <div className="recipe-container">
+      <div className="recipe-container ">
         <p>The dish is very good and you didnt become a zombie!</p>
         <button
           onClick={() => {
@@ -120,7 +135,7 @@ function App() {
 
   const YouLost = () => {
     return (
-      <div className="recipe-container">
+      <div className="recipe-container ">
         This is interesting! But we have never seen it before...
       </div>
     );
@@ -128,11 +143,8 @@ function App() {
 
   const SetUp = () => {
     if (current === "curry") {
-
     } else if (current === "salad") {
-
     } else {
-
     }
   };
 
@@ -157,7 +169,10 @@ function App() {
   const take = (name, image) => {
     document.getElementById(name).style.display = "none";
     let tempCollected = [...collected];
-    if (tempCollected.length < 4 && !tempCollected.includes(image)) {
+    if (
+      tempCollected.length < current.inventorySize &&
+      !tempCollected.includes(image)
+    ) {
       tempCollected.push(image);
     }
     setCollected(tempCollected);
@@ -165,7 +180,7 @@ function App() {
   };
 
   const Cauldron = () => {
-    if (collected.length !== 4) {
+    if (collected.length !== current.inventorySize) {
       return (
         <div className="cauldron">
           <img id="cauldron-img" src={images.Pot} />
@@ -187,29 +202,32 @@ function App() {
 
   return (
     <div>
-        <img id="background-img" src={current.environment} />
-        <div className="App">
-          <Story textList={current.textList} />
-          <Character
-            status={characterStatus}
-            human={current.character.human}
-            halfZombie={current.character.halfZombie}
-            zombie={current.character.zombie}
-          />
-          <div className="inventory-container">
-              <div className="inventory">
-                {collected[0] !== undefined ? <img src={collected[0]} />  : null}
-              </div>
-              <div className="inventory">
-                {collected[1] !== undefined ? <img src={collected[1]} /> : null}
-              </div>
-              <div className="inventory">
-                {collected[2] !== undefined ? <img src={collected[2]} /> : null}
-              </div>
-              <div className="inventory">
-                {collected[3] !== undefined ? <img src={collected[3]} /> : null}
-              </div>
+      <img id="background-img" src={current.environment} />
+      <div className="App">
+        <Story textList={current.textList} />
+        <Character
+          status={characterStatus}
+          human={current.character.human}
+          halfZombie={current.character.halfZombie}
+          zombie={current.character.zombie}
+        />
+        <div className="inventory-container">
+          {emptyInventory.map((item) => {
+            return <div className="inventory"></div>;
+          })}
+          <div className="img-container">
+            {collected.map((item, i) => {
+              console.log(collected);
+              return (
+                <img
+                  className="inventory-item"
+                  key={i}
+                  src={collected[i] !== undefined ? collected[i] : null}
+                />
+              );
+            })}
           </div>
+        </div>
         {current.storage.map((s, idx) => {
           return (
             <Storage

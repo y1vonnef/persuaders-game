@@ -114,6 +114,7 @@
   height: 760px;
   width: 1080px;
   left: 10px;
+  z-index: 1000;
 }
 
 .inspector {
@@ -134,7 +135,7 @@
 }
 
 .inspector-img {
-  width: 300px;
+  height: 350px;
 }
 
 #recipe {
@@ -146,11 +147,15 @@
 .recipe-container {
   text-align: center;
   font-size: 30px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: white 5px solid;
+  padding: 20px;
+  border-radius: 8px;
   position: absolute;
-  width: 90vw;
+  width: 1000px;
   height: 90vh;
-  left: 100px;
+  left: 25px;
+  z-index: 100;
 }
 
 button {
@@ -199,4 +204,14 @@ button {
   z-index: 99;
   position: absolute;
   height: 782.217px;
+}
+
+.inventory-item {
+  width: 79px;
+  height: 79px;
+}
+
+.img-container {
+  display: flex;
+  position: absolute;
 }
