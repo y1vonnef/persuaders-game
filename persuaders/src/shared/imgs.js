@@ -23,7 +23,7 @@ import Apple from "../assets/imgs/curry/apple_slice.svg";
 import AppleMag from "../assets/imgs/curry/appleSlices_mag.svg";
 import Potato from "../assets/imgs/curry/potato.svg";
 import Curry from "../assets/imgs/curry/curry.svg";
-import Carrot from "../assets/imgs/curry/carrot.svg";
+import Carrot from "../assets/imgs/curry/half_carrot.svg";
 import Banana from "../assets/imgs/curry/banana.svg";
 import BananaMag from "../assets/imgs/curry/bruisedBanana_mag.svg";
 import Recipe from "../assets/imgs/curry/recipe_book.svg";

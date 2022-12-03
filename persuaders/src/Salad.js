@@ -8,7 +8,7 @@ const Salad = {
     lit: images.BowlLit,
     x: "618px",
     y: "213px",
-    width: "105px"
+    width: "105px",
   },
   winningRecipe: [
     images.Spinach,
@@ -18,6 +18,11 @@ const Salad = {
     images.Vinegar,
     images.Honey,
   ],
+  winMsg:
+    "Yay! Matt is returning to the human form with your help. You are a natural at making salads using the ingredients found in the house!",
+  failMsg:
+    "Uh oh… crouton sounds yummy, but unfortunately this recipe doesn’t bring back human Matt. Matt the Zombie will still be roaming around in this city. (psst… Try save him again next time you encounter him)",
+
   character: {
     name: "Matt",
     human: images.MattHuman,
@@ -42,13 +47,13 @@ const Salad = {
       ingredients: ["eggs", "spinach"],
     },
     {
-     name: "salad_cabinet",
-     open: images.SaladCabinetOpen,
-     closed: images.SaladCabinet,
-     x: "475px",
-     y: "62px",
-     width: "164px",
-     ingredients: ["oil", "vinegar"],
+      name: "salad_cabinet",
+      open: images.SaladCabinetOpen,
+      closed: images.SaladCabinet,
+      x: "475px",
+      y: "62px",
+      width: "164px",
+      ingredients: ["oil", "vinegar"],
     },
     {
       name: "salad_sink",
@@ -111,13 +116,13 @@ const Salad = {
       text: "This was lying around but still good to eat!",
     },
     {
-
-        name: "oil",
-        image: images.Oil,
-        x: "510px",
-        y: "135px",
-        title: "A bottle of oil",
-        text: "Hasn't expired yet even though it's dusty on the outside. Can still be used!",
+      name: "oil",
+      image: images.Oil,
+      imageMag: images.OilMag,
+      x: "510px",
+      y: "135px",
+      title: "A bottle of oil",
+      text: "Hasn't expired yet even though it's dusty on the outside. Can still be used!",
     },
     {
       name: "spinach",
@@ -130,12 +135,14 @@ const Salad = {
       text: "These were in the ice box and still look fresh, haven't expired  yet. I can use this!",
     },
     {
-        name: "vinegar",
-        image: images.Vinegar,
-        x: "570px",
-        y: "129px",
-        title: "An old bottle of vinegar",
-        text: "Due to its acidic nature, it never expires. This can come in handy!",
+      name: "vinegar",
+      image: images.Vinegar,
+      imageMag: images.Vinegar,
+
+      x: "570px",
+      y: "129px",
+      title: "An old bottle of vinegar",
+      text: "Due to its acidic nature, it never expires. This can come in handy!",
     },
   ],
 };
