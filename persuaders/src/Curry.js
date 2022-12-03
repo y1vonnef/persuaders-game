@@ -8,7 +8,7 @@ const Curry = {
     lit: images.PotLit,
     x: "618px",
     y: "273px",
-    width: "185px"
+    width: "185px",
   },
   winningRecipe: [images.Apple, images.Carrot, images.Potato, images.Curry],
   character: {
@@ -66,6 +66,7 @@ const Curry = {
     {
       name: "apple",
       image: images.Apple,
+      imageMag: images.AppleMag,
       x: "100px",
       y: "185px",
       title: "A few leftover slices of apple",
@@ -74,6 +75,8 @@ const Curry = {
     {
       name: "potato",
       image: images.Potato,
+      imageMag: images.Potato,
+
       x: "870px",
       y: "426px",
       title: "An old potato",
@@ -82,6 +85,8 @@ const Curry = {
     {
       name: "curry",
       image: images.Curry,
+      imageMag: images.Curry,
+
       x: "524px",
       y: "404px",
       title: "A packet of curry",
@@ -90,6 +95,8 @@ const Curry = {
     {
       name: "carrot",
       image: images.Carrot,
+      imageMag: images.Carrot,
+
       x: "599px",
       y: "127px",
       title: "Half a carrot..",
@@ -98,6 +105,8 @@ const Curry = {
     {
       name: "banana",
       image: images.Banana,
+      imageMag: images.BananaMag,
+
       x: "720px",
       y: "246px",
       title: "A bruised banana",
