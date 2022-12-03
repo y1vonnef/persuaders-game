@@ -10,6 +10,7 @@ const Pizza = {
     y: "273px",
     width: "185px"
   },
+  winningRecipe: [images.Takeout, images.Tomato, images.Dough, images.Cheese],
   character: {
     name: "Emma",
     human: images.EmmaHuman,

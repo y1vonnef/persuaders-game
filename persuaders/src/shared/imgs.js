@@ -20,10 +20,12 @@ import CurryUpperCabinet from "../assets/imgs/curry/upper_cabinet.svg";
 import CurryUpperCabinetOpen from "../assets/imgs/curry/upper_cabinet_open.svg";
 import CurryUpperCabinetDoor from "../assets/imgs/curry/upper_cabinet_door.svg";
 import Apple from "../assets/imgs/curry/apple_slice.svg";
+import AppleMag from "../assets/imgs/curry/appleSlices_mag.svg";
 import Potato from "../assets/imgs/curry/potato.svg";
 import Curry from "../assets/imgs/curry/curry.svg";
 import Carrot from "../assets/imgs/curry/carrot.svg";
 import Banana from "../assets/imgs/curry/banana.svg";
+import BananaMag from "../assets/imgs/curry/bruisedBanana_mag.svg";
 import Recipe from "../assets/imgs/curry/recipe_book.svg";
 import HiroHuman from "../assets/imgs/curry/hiro_human.png";
 import HiroHalfZombie from "../assets/imgs/curry/hiro_half_zombie.png";
@@ -43,7 +45,9 @@ import Eggs from "../assets/imgs/salad/eggs.svg";
 import Honey from "../assets/imgs/salad/honey.svg";
 import Kiwi from "../assets/imgs/salad/kiwi.svg";
 import Oil from "../assets/imgs/salad/oil.svg";
+import OilMag from "../assets/imgs/salad/oil_mag.svg";
 import Spinach from "../assets/imgs/salad/spinach.svg";
+import SpinachMag from "../assets/imgs/salad/spinach_mag.svg";
 import Vinegar from "../assets/imgs/salad/vinegar.svg";
 import Bread from "../assets/imgs/salad/bread.svg";
 import MattHuman from "../assets/imgs/salad/matt_human.png";
@@ -82,10 +86,12 @@ const images = {
 
   //Curry - Hiro
   Apple: Apple,
+  AppleMag: AppleMag,
   Potato: Potato,
   Curry: Curry,
   Carrot: Carrot,
   Banana: Banana,
+  BananaMag: BananaMag,
   Recipe: Recipe,
   EnvHiro: EnvHiro,
   CurryFridge: CurryFridge,
@@ -118,7 +124,9 @@ const images = {
   Honey: Honey,
   Kiwi: Kiwi,
   Oil: Oil,
+  OilMag: OilMag,
   Spinach: Spinach,
+  SpinachMag: SpinachMag,
   Vinegar: Vinegar,
   Bread: Bread,
   MattHuman: MattHuman,
