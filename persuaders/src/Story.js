@@ -17,30 +17,36 @@ const Story = (props) => {
   }
 
   return (
-    <div
-      className="narrative"
-      id="narrative-box"
-      style={{ display: finished ? "none" : "block" }}
-    >
-      <p>{text}</p>
-      {text !== last ? (
-        <button
-          onClick={() => {
-            update();
-          }}
-        >
-          Next
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            hide();
-          }}
-        >
-          Challenge accepted!
-        </button>
-      )}
-    </div>
+    <>
+      <div
+        className="narrative"
+        id="narrative-box"
+        style={{ display: finished ? "none" : "block" }}
+      >
+        <p>{text}</p>
+        {text !== last ? (
+          <button
+            onClick={() => {
+              update();
+            }}
+          >
+            Next
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              hide();
+            }}
+          >
+            Challenge accepted!
+          </button>
+        )}
+      </div>
+      <div
+        className="overlay"
+        style={{ display: finished ? "none" : "block" }}
+      ></div>
+    </>
   );
 };
 
