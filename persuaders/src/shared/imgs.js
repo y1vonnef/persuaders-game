@@ -1,6 +1,5 @@
 import Pot from "../assets/imgs/pot_normal.svg";
 import PotLit from "../assets/imgs/pot_lit.svg";
-import PotTopLit from "../assets/imgs/pot_top_lit.svg";
 
 //Curry
 import EnvHiro from "../assets/imgs/curry/environment_hiro.svg";
@@ -21,8 +20,10 @@ import Potato from "../assets/imgs/curry/potato.svg";
 import Curry from "../assets/imgs/curry/curry.svg";
 import Carrot from "../assets/imgs/curry/carrot.svg";
 import Banana from "../assets/imgs/curry/banana.svg";
-
 import Recipe from "../assets/imgs/curry/recipe_book.svg";
+import HiroHuman from "../assets/imgs/curry/hiro_human.png";
+import HiroHalfZombie from "../assets/imgs/curry/hiro_half_zombie.png";
+import HiroZombie from "../assets/imgs/curry/hiro_zombie.png";
 
 //Salad
 import EnvMatt from "../assets/imgs/salad/environment_matt.svg";
@@ -41,12 +42,37 @@ import Oil from "../assets/imgs/salad/oil.svg";
 import Spinach from "../assets/imgs/salad/spinach.svg";
 import Vinegar from "../assets/imgs/salad/vinegar.svg";
 import Bread from "../assets/imgs/salad/bread.svg";
+import MattHuman from "../assets/imgs/salad/matt_human.png";
+import MattHalfZombie from "../assets/imgs/salad/matt_half_zombie.png";
+import MattZombie from "../assets/imgs/salad/matt_zombie.png";
 
+//Pizza
+import EnvRoommate from "../assets/imgs/pizza/Environment-Roommate.svg";
+import PizzaFridgeOpen from "../assets/imgs/pizza/fridge_open.svg";
+import PizzaFridge from "../assets/imgs/pizza/fridge.svg";
+import PizzaUpperCabinetOpen from "../assets/imgs/pizza/upper_cabinet_open.svg";
+import PizzaUpperCabinet from "../assets/imgs/pizza/upper_cabinet.svg";
+import PizzaSinkOpen from "../assets/imgs/pizza/sink_cabinet_open.svg";
+import PizzaSink from "../assets/imgs/pizza/sink_cabinet.svg";
+import PizzaMiddleCabinetOpen from "../assets/imgs/pizza/top_middle_cabinet_open.svg";
+import PizzaMiddleCabinet from "../assets/imgs/pizza/top_middle_cabinet.svg";
+import Cheese from "../assets/imgs/pizza/Cheese.svg";
+import Dough from "../assets/imgs/pizza/dough.svg";
+import Pumpkin from "../assets/imgs/pizza/pumpkin.svg";
+import PumpkinMag from "../assets/imgs/pizza/pumpkin_mag.svg";
+import Takeout from "../assets/imgs/pizza/takeout.svg";
+import Pepperoni from "../assets/imgs/pizza/pepperoni.svg";
+import PepperoniMag from "../assets/imgs/pizza/pepperoni_mag.svg";
+import Tomato from "../assets/imgs/pizza/tomato.svg";
+import EmmaHuman from "../assets/imgs/pizza/roommate1.png";
+import EmmaHalfZombie from "../assets/imgs/pizza/roommate2.png";
+import EmmaZombie from "../assets/imgs/pizza/roommate3.png";
 
 const images = {
   Pot: Pot,
   PotLit: PotLit,
-  PotTopLit: PotTopLit,
+
+  //Curry - Hiro
   Apple: Apple,
   Potato: Potato,
   Curry: Curry,
@@ -66,6 +92,11 @@ const images = {
   CurryUpperCabinet: CurryUpperCabinet,
   CurryUpperCabinetOpen: CurryUpperCabinetOpen,
   CurryUpperCabinetDoor: CurryUpperCabinetDoor,
+  HiroHuman: HiroHuman,
+  HiroHalfZombie: HiroHalfZombie,
+  HiroZombie: HiroZombie,
+
+  //Salad - Matt
   EnvMatt: EnvMatt,
   SaladCabinet: SaladCabinet,
   SaladFridge: SaladFridge,
@@ -81,7 +112,32 @@ const images = {
   Oil: Oil,
   Spinach: Spinach,
   Vinegar: Vinegar,
-  Bread: Bread
+  Bread: Bread,
+  MattHuman: MattHuman,
+  MattHalfZombie: MattHalfZombie,
+  MattZombie: MattZombie,
+
+  //Pizza - Emma
+  PizzaFridgeOpen: PizzaFridgeOpen,
+  PizzaFridge: PizzaFridge,
+  PizzaUpperCabinetOpen: PizzaUpperCabinetOpen,
+  PizzaUpperCabinet: PizzaUpperCabinet,
+  PizzaSinkOpen: PizzaSinkOpen,
+  PizzaSink: PizzaSink,
+  PizzaMiddleCabinetOpen: PizzaMiddleCabinetOpen,
+  PizzaMiddleCabinet: PizzaMiddleCabinet,
+  Cheese: Cheese,
+  Dough: Dough,
+  Pumpkin: Pumpkin,
+  PumpkinMag: PumpkinMag,
+  Tomato: Tomato,
+  Takeout: Takeout,
+  Pepperoni: Pepperoni,
+  PepperoniMag: PepperoniMag,
+  EnvRoommate: EnvRoommate,
+  EmmaHuman: EmmaHuman,
+  EmmaHalfZombie: EmmaHalfZombie,
+  EmmaZombie: EmmaZombie,
 };
 
 export default images;

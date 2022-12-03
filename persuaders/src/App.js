@@ -1,17 +1,35 @@
 import React, { useState } from "react";
 import "./App.css";
-import {saladBackground, saladIngredients, saladStorage} from "./Salad.js";
-import {curryBackground, curryIngredients, curryStorage} from "./Curry.js";
 import images from "./shared/imgs";
-import Ingredient from './Ingredient.js';
-import Storage from './Storage.js';
+import Ingredient from "./Ingredient.js";
+import Storage from "./Storage.js";
+import Character from "./Character.js";
+import Story from "./Story.js";
+import Pizza from "./Pizza.js";
+import Salad from "./Salad.js";
+import Curry from "./Curry.js";
+
+// for each level we need to specify: 1-inventory size; 2- winning answer; 3- story text; 4 - win text; 5 - recipe; 6 - fail text; 7 - pot position (it's diff for each level); 8 - pot img (need to fix pot!)
+
+const pizzaLevel = {
+  inventorySize: 4,
+  winningAnswer: ["dough", "cheese", "takeout", "tomato"],
+  potX: "590px",
+  potY: "273px",
+};
 
 function App() {
   const [collected, setCollected] = useState([]);
+
   const [cooking, setCooking] = useState(false);
+
   const [result, setResult] = useState("");
+
   const [recipe, setRecipe] = useState("");
-  const [current, setCurrent] = useState([{background: saladBackground, storage: saladStorage, ingredients: saladIngredients}]);
+
+  const [current, setCurrent] = useState(Salad);
+
+  const [characterStatus, setCharacterStatus] = useState("halfZombie");
 
   const [ingredientsIn, setIngredients] = useState([]);
 
@@ -31,7 +49,11 @@ function App() {
         <div className="cauldron-cook">
           <img src={images.PotLit} />
           {ingredientsIn.map((item, index) => {
-            return <div key={index}><img src={item} /></div>;
+            return (
+              <div key={index}>
+                <img src={item} />
+              </div>
+            );
           })}
           <div className="cooking-inventory-container">
             {collected.map((item, index) => {
@@ -50,6 +72,7 @@ function App() {
           </div>
           {ingredientsIn.length === 4 ? (
             <button
+              id="cook-inventory"
               onClick={() => {
                 giveResults();
               }}
@@ -115,31 +138,31 @@ function App() {
 
   const storageClick = (name, ingredients) => {
     console.log(name);
-    document.getElementById(name).style.display="none";
-    document.getElementById(name + "_open").style.display="block";
-    for (let i=0; i < ingredients.length; i++) {
-        console.log(document.getElementById(ingredients[i]));
-        document.getElementById(ingredients[i]).style.display="block";
+    document.getElementById(name).style.display = "none";
+    document.getElementById(name + "_open").style.display = "block";
+    for (let i = 0; i < ingredients.length; i++) {
+      console.log(document.getElementById(ingredients[i]));
+      document.getElementById(ingredients[i]).style.display = "block";
     }
-  }
+  };
 
   const openPopup = (name) => {
     document.getElementById(name + "_popup").style.display = "block";
-  }
+  };
 
   const nevermind = (name) => {
     document.getElementById(name + "_popup").style.display = "none";
-  }
+  };
 
   const take = (name, image) => {
-    document.getElementById(name).style.display="none";
+    document.getElementById(name).style.display = "none";
     let tempCollected = [...collected];
     if (tempCollected.length < 4 && !tempCollected.includes(image)) {
       tempCollected.push(image);
     }
     setCollected(tempCollected);
     nevermind(name);
-  }
+  };
 
   const Cauldron = () => {
     if (collected.length !== 4) {
@@ -164,8 +187,15 @@ function App() {
 
   return (
     <div>
-        <img id="background-img" src={current[0].background} />
+        <img id="background-img" src={current.environment} />
         <div className="App">
+          <Story textList={current.textList} />
+          <Character
+            status={characterStatus}
+            human={current.character.human}
+            halfZombie={current.character.halfZombie}
+            zombie={current.character.zombie}
+          />
           <div className="inventory-container">
               <div className="inventory">
                 {collected[0] !== undefined ? <img src={collected[0]} />  : null}
@@ -180,21 +210,43 @@ function App() {
                 {collected[3] !== undefined ? <img src={collected[3]} /> : null}
               </div>
           </div>
-          {current[0].storage.map(
-           (s, idx) => {
-            return <Storage key={idx} name={s.name} open={s.open} closed={s.closed} x={s.x} y={s.y} width={s.width} storageClick={storageClick} ingredients={s.ingredients} />;
-           }
-          )}
-          {current[0].ingredients.map(
-           (i, idx) => {
-            return <Ingredient key={i.name} name={i.name} image={i.image} x={i.x} y={i.y} openPopup={openPopup} nevermind={nevermind} take={take} title={i.title} text={i.text} />;
-           }
-          )}
-          <Cauldron />
-          {cooking === true ? <CookPopUp /> : null}
-          {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
-          {recipe === true ? <ViewRecipe /> : null}
-        </div>
+        {current.storage.map((s, idx) => {
+          return (
+            <Storage
+              key={idx}
+              name={s.name}
+              open={s.open}
+              closed={s.closed}
+              x={s.x}
+              y={s.y}
+              width={s.width}
+              storageClick={storageClick}
+              ingredients={s.ingredients}
+            />
+          );
+        })}
+        {current.ingredients.map((i, idx) => {
+          return (
+            <Ingredient
+              key={i.name}
+              name={i.name}
+              image={i.image}
+              imageMag={i.imageMag}
+              x={i.x}
+              y={i.y}
+              openPopup={openPopup}
+              nevermind={nevermind}
+              take={take}
+              title={i.title}
+              text={i.text}
+            />
+          );
+        })}
+        <Cauldron />
+        {cooking === true ? <CookPopUp /> : null}
+        {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
+        {recipe === true ? <ViewRecipe /> : null}
+      </div>
     </div>
   );
 }
