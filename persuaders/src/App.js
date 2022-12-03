@@ -167,8 +167,8 @@ function App() {
   const Cauldron = () => {
     if (collected.length !== 4) {
       return (
-        <div className="cauldron">
-          <img id="cauldron-img" src={images.Pot} />
+        <div className="cauldron" style={{ left: current.cook.x, top: current.cook.y }}>
+          <img id="cauldron-img" src={current.cook.unlit} style={{ width: current.cook.width }} />
         </div>
       );
     } else {
@@ -178,8 +178,9 @@ function App() {
           onClick={() => {
             setCooking(true);
           }}
+          style={{ left: current.cook.x, top: current.cook.y}}
         >
-          <img id="cauldron-img" src={images.PotLit} />
+          <img id="cauldron-img" src={current.cook.lit} style={{ width: current.cook.width }} />
         </div>
       );
     }
@@ -195,6 +196,8 @@ function App() {
             human={current.character.human}
             halfZombie={current.character.halfZombie}
             zombie={current.character.zombie}
+            x={current.character.x}
+            y={current.character.y}
           />
           <div className="inventory-container">
               <div className="inventory">

@@ -3,11 +3,20 @@ import images from "./shared/imgs";
 const Curry = {
   environment: images.EnvHiro,
   inventorySize: 4,
+  cook: {
+    unlit: images.Pot,
+    lit: images.PotLit,
+    x: "618px",
+    y: "273px",
+    width: "185px"
+  },
   character: {
     name: "Hiro",
     human: images.HiroHuman,
     halfZombie: images.HiroHalfZombie,
     zombie: images.HiroZombie,
+    x: "280px",
+    y: "250px",
   },
   textList: [
     "Oh no! Our friend Hiro turned into a zombie!",

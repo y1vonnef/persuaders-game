@@ -3,11 +3,20 @@ import images from "./shared/imgs";
 const Pizza = {
   environment: images.EnvRoommate,
   inventorySize: 4,
+  cook: {
+    unlit: images.Pot,
+    lit: images.PotLit,
+    x: "585px",
+    y: "273px",
+    width: "185px"
+  },
   character: {
     name: "Emma",
     human: images.EmmaHuman,
     halfZombie: images.EmmaHalfZombie,
     zombie: images.EmmaZombie,
+    x: "320px",
+    y: "120px",
   },
   textList: [
     "Oh no! Your roommate Emma  turned into a zombie!",

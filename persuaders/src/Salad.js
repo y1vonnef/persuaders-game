@@ -3,11 +3,20 @@ import images from "./shared/imgs";
 const Salad = {
   environment: images.EnvMatt,
   inventorySize: 6,
+  cook: {
+    unlit: images.Bowl,
+    lit: images.BowlLit,
+    x: "618px",
+    y: "213px",
+    width: "105px"
+  },
   character: {
     name: "Matt",
     human: images.MattHuman,
     halfZombie: images.MattHalfZombie,
     zombie: images.MattZombie,
+    x: "280px",
+    y: "230px",
   },
   textList: [
     "Oh no! Our friend Matt also got infected! He used to make himself a refreshing salad whenever he was not well.",
@@ -29,7 +38,7 @@ const Salad = {
      open: images.SaladCabinetOpen,
      closed: images.SaladCabinet,
      x: "475px",
-     y: "112px",
+     y: "62px",
      width: "164px",
      ingredients: ["oil", "vinegar"],
     },
@@ -89,7 +98,7 @@ const Salad = {
         name: "oil",
         image: images.Oil,
         x: "510px",
-        y: "185px",
+        y: "135px",
         title: "A bottle of oil",
         text: "Hasn't expired yet even though it's dusty on the outside. Can still be used!",
     },
@@ -105,7 +114,7 @@ const Salad = {
         name: "vinegar",
         image: images.Vinegar,
         x: "570px",
-        y: "179px",
+        y: "129px",
         title: "An old bottle of vinegar",
         text: "Due to its acidic nature, it never expires. This can come in handy!",
     },

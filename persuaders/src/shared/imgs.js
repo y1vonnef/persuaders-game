@@ -1,5 +1,9 @@
 import Pot from "../assets/imgs/pot_normal.svg";
 import PotLit from "../assets/imgs/pot_lit.svg";
+import PotTop from "../assets/imgs/pot_top_normal.png";
+import Bowl from "../assets/imgs/bowl_normal.png";
+import BowlLit from "../assets/imgs/bowl_lit.png";
+import BowlTop from "../assets/imgs/bowl_top_normal.png";
 
 //Curry
 import EnvHiro from "../assets/imgs/curry/environment_hiro.svg";
@@ -71,6 +75,10 @@ import EmmaZombie from "../assets/imgs/pizza/roommate3.png";
 const images = {
   Pot: Pot,
   PotLit: PotLit,
+  PotTop: PotTop,
+  Bowl: Bowl,
+  BowlLit: BowlLit,
+  BowlTop: BowlTop,
 
   //Curry - Hiro
   Apple: Apple,
