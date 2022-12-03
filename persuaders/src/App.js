@@ -1,92 +1,109 @@
 import React, { useState } from "react";
 import "./App.css";
 import images from "./shared/imgs";
-import Ingredient from './Ingredient.js';
-import Storage from './Storage.js';
+import Ingredient from "./Ingredient.js";
+import Storage from "./Storage.js";
+import Character from "./Character.js";
+import Story from "./Story.js";
+import Pizza from "./Pizza.js";
+
+// for each level we need to specify: 1-inventory size; 2- winning answer; 3- story text; 4 - win text; 5 - recipe; 6 - fail text; 7 - pot position (it's diff for each level); 8 - pot img (need to fix pot!)
+
+const pizzaLevel = {
+  inventorySize: 4,
+  winningAnswer: ["dough", "cheese", "takeout", "tomato"],
+  potX: "590px",
+  potY: "273px",
+};
 
 function App() {
   const [collected, setCollected] = useState([]);
   const [cooking, setCooking] = useState(false);
   const [result, setResult] = useState("");
   const [recipe, setRecipe] = useState("");
+  const [characterStatus, setCharacterStatus] = useState("halfZombie");
 
-  const [curryStorage] = React.useState([{
-                                         name: "fridge",
-                                         open: images.CurryFridgeOpen,
-                                         closed: images.CurryFridge,
-                                         x: "-10px",
-                                         y: "63px",
-                                         width: "400px",
-                                         ingredients: ["apple"],
-                                       },
-                                       {
-                                         name: "lower_cabinet",
-                                         open: images.CurryLowerCabinetOpen,
-                                         closed: images.CurryLowerCabinet,
-                                         x: "775px",
-                                         y: "347px",
-                                         width: "400px",
-                                         ingredients: ["potato"],
-                                       },
-                                       {
-                                         name: "sink",
-                                         open: images.CurrySinkOpen,
-                                         closed: images.CurrySink,
-                                         x: "460px",
-                                         y: "229px",
-                                         width: "412px",
-                                         ingredients: ["curry"],
-                                       },
-                                       {
-                                         name: "upper_cabinet",
-                                         open: images.CurryUpperCabinetOpen,
-                                         closed: images.CurryUpperCabinet,
-                                         x: "477px",
-                                         y: "44px",
-                                         width: "340px",
-                                         ingredients: ["carrot"],
-                                       }]);
+  const [curryStorage] = React.useState([
+    {
+      name: "fridge",
+      open: images.CurryFridgeOpen,
+      closed: images.CurryFridge,
+      x: "-10px",
+      y: "63px",
+      width: "400px",
+      ingredients: ["apple"],
+    },
+    {
+      name: "lower_cabinet",
+      open: images.CurryLowerCabinetOpen,
+      closed: images.CurryLowerCabinet,
+      x: "775px",
+      y: "347px",
+      width: "400px",
+      ingredients: ["potato"],
+    },
+    {
+      name: "sink",
+      open: images.CurrySinkOpen,
+      closed: images.CurrySink,
+      x: "460px",
+      y: "229px",
+      width: "412px",
+      ingredients: ["curry"],
+    },
+    {
+      name: "upper_cabinet",
+      open: images.CurryUpperCabinetOpen,
+      closed: images.CurryUpperCabinet,
+      x: "477px",
+      y: "44px",
+      width: "340px",
+      ingredients: ["carrot"],
+    },
+  ]);
 
-  const [curryIngredients] = React.useState([{
-                                              name: "apple",
-                                              image: images.Apple,
-                                              x: "100px",
-                                              y: "185px",
-                                              title: "A few leftover slices of apple",
-                                              text: "Looks a bit brown, but still perfectly safe to eat.",
-                                             },
-                                             {
-                                              name: "potato",
-                                              image: images.Potato,
-                                              x: "870px",
-                                              y: "426px",
-                                              title: "An old potato",
-                                              text: "This potato is a bit old, but hasn’t sprouted yet!",
-                                             },
-                                             {
-                                              name: "curry",
-                                              image: images.Curry,
-                                              x: "524px",
-                                              y: "404px",
-                                              title: "A packet of curry",
-                                              text: "Curry is great to have around to cook leftover produce with!",
-                                             },
-                                             {
-                                              name: "carrot",
-                                              image: images.Carrot,
-                                              x: "599px",
-                                              y: "127px",
-                                              title: "Half a carrot..",
-                                              text: "",
-                                             },
-                                             {
-                                              name: "banana",
-                                              image: images.Banana,
-                                              x: "720px",
-                                              y: "246px",
-                                              title: "A bruised banana",
-                                              text: "We can cut off the brown parts and eat the rest.",
-                                             }]);
+  const [curryIngredients] = React.useState([
+    {
+      name: "apple",
+      image: images.Apple,
+      x: "100px",
+      y: "185px",
+      title: "A few leftover slices of apple",
+      text: "Looks a bit brown, but still perfectly safe to eat.",
+    },
+    {
+      name: "potato",
+      image: images.Potato,
+      x: "870px",
+      y: "426px",
+      title: "An old potato",
+      text: "This potato is a bit old, but hasn’t sprouted yet!",
+    },
+    {
+      name: "curry",
+      image: images.Curry,
+      x: "524px",
+      y: "404px",
+      title: "A packet of curry",
+      text: "Curry is great to have around to cook leftover produce with!",
+    },
+    {
+      name: "carrot",
+      image: images.Carrot,
+      x: "599px",
+      y: "127px",
+      title: "Half a carrot..",
+      text: "",
+    },
+    {
+      name: "banana",
+      image: images.Banana,
+      x: "720px",
+      y: "246px",
+      title: "A bruised banana",
+      text: "We can cut off the brown parts and eat the rest.",
+    },
+  ]);
 
   const [ingredientsIn, setIngredients] = useState([]);
 
@@ -106,7 +123,11 @@ function App() {
         <div className="cauldron-cook">
           <img src={images.PotLit} />
           {ingredientsIn.map((item, index) => {
-            return <div key={index}><img src={item} /></div>;
+            return (
+              <div key={index}>
+                <img src={item} />
+              </div>
+            );
           })}
           <div className="inventory-container">
             {collected.map((item, index) => {
@@ -124,7 +145,8 @@ function App() {
             })}
           </div>
           {ingredientsIn.length === 4 ? (
-            <button id="cook-inventory"
+            <button
+              id="cook-inventory"
               onClick={() => {
                 giveResults();
               }}
@@ -199,31 +221,31 @@ function App() {
 
   const storageClick = (name, ingredients) => {
     console.log(name);
-    document.getElementById(name).style.display="none";
-    document.getElementById(name + "_open").style.display="block";
-    for (let i=0; i < ingredients.length; i++) {
-        console.log(document.getElementById(ingredients[i]));
-        document.getElementById(ingredients[i]).style.display="block";
+    document.getElementById(name).style.display = "none";
+    document.getElementById(name + "_open").style.display = "block";
+    for (let i = 0; i < ingredients.length; i++) {
+      console.log(document.getElementById(ingredients[i]));
+      document.getElementById(ingredients[i]).style.display = "block";
     }
-  }
+  };
 
   const openPopup = (name) => {
     document.getElementById(name + "_popup").style.display = "block";
-  }
+  };
 
   const nevermind = (name) => {
     document.getElementById(name + "_popup").style.display = "none";
-  }
+  };
 
   const take = (name, image) => {
-    document.getElementById(name).style.display="none";
+    document.getElementById(name).style.display = "none";
     let tempCollected = [...collected];
     if (tempCollected.length < 4 && !tempCollected.includes(image)) {
       tempCollected.push(image);
     }
     setCollected(tempCollected);
     nevermind(name);
-  }
+  };
 
   const Cauldron = () => {
     if (collected.length !== 4) {
@@ -248,44 +270,74 @@ function App() {
 
   return (
     <div>
-        <img id="background-img" src={images.EnvHiro} />
-        <div className="App">
-          {/*
+      <img id="background-img" src={images.EnvRoommate} />
+      <div className="App">
+        {/*
           <img id="background-img" src={images.EnvMatt} />
           <Storage name="fridge" open={images.FridgeOpen} closed={images.Fridge} x="180px" y="175px" width="290px" />
           <Storage name="cabinet" open={images.CabinetOpen} closed={images.Cabinet} x="650px" y="100px" width="180px" />
           <Storage name="kitchen_sink" open={images.KitchenSinkOpen} closed={images.KitchenSink} x="570px" y="332px" width="330px" />
           <Storage name="large_cabinet" open={images.LargeCabinetOpen} closed={images.LargeCabinet} x="900px" y="64px" width="340px" />
           */}
-          <div className="inventory-container">
-              <div className="inventory">
-                {collected[0] !== undefined ? <img src={collected[0]} />  : null}
-              </div>
-              <div className="inventory">
-                {collected[1] !== undefined ? <img src={collected[1]} /> : null}
-              </div>
-              <div className="inventory">
-                {collected[2] !== undefined ? <img src={collected[2]} /> : null}
-              </div>
-              <div className="inventory">
-                {collected[3] !== undefined ? <img src={collected[3]} /> : null}
-              </div>
+        <Story textList={Pizza.textList} />
+        <Character
+          status={characterStatus}
+          human={Pizza.character.human}
+          halfZombie={Pizza.character.halfZombie}
+          zombie={Pizza.character.zombie}
+        />
+        <div className="inventory-container">
+          <div className="inventory">
+            {collected[0] !== undefined ? <img src={collected[0]} /> : null}
           </div>
-          {curryStorage.map(
-           (s, idx) => {
-            return <Storage key={idx} name={s.name} open={s.open} closed={s.closed} x={s.x} y={s.y} width={s.width} storageClick={storageClick} ingredients={s.ingredients} />;
-           }
-          )}
-          {curryIngredients.map(
-           (i, idx) => {
-            return <Ingredient key={i.name} name={i.name} image={i.image} x={i.x} y={i.y} openPopup={openPopup} nevermind={nevermind} take={take} title={i.title} text={i.text} />;
-           }
-          )}
-          <Cauldron />
-          {cooking === true ? <CookPopUp /> : null}
-          {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
-          {recipe === true ? <ViewRecipe /> : null}
+          <div className="inventory">
+            {collected[1] !== undefined ? <img src={collected[1]} /> : null}
+          </div>
+          <div className="inventory">
+            {collected[2] !== undefined ? <img src={collected[2]} /> : null}
+          </div>
+          <div className="inventory">
+            {collected[3] !== undefined ? <img src={collected[3]} /> : null}
+          </div>
         </div>
+
+        {Pizza.pizzaStorage.map((s, idx) => {
+          return (
+            <Storage
+              key={idx}
+              name={s.name}
+              open={s.open}
+              closed={s.closed}
+              x={s.x}
+              y={s.y}
+              width={s.width}
+              storageClick={storageClick}
+              ingredients={s.ingredients}
+            />
+          );
+        })}
+        {Pizza.pizzaIngredients.map((i, idx) => {
+          return (
+            <Ingredient
+              key={i.name}
+              name={i.name}
+              image={i.image}
+              imageMag={i.imageMag}
+              x={i.x}
+              y={i.y}
+              openPopup={openPopup}
+              nevermind={nevermind}
+              take={take}
+              title={i.title}
+              text={i.text}
+            />
+          );
+        })}
+        <Cauldron />
+        {cooking === true ? <CookPopUp /> : null}
+        {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
+        {recipe === true ? <ViewRecipe /> : null}
+      </div>
     </div>
   );
 }

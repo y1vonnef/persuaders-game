@@ -34,6 +34,27 @@ import FridgeOpen from "../assets/imgs/salad/fridge_open.svg";
 import KitchenSinkOpen from "../assets/imgs/salad/kitchen_sink_open.svg";
 import LargeCabinetOpen from "../assets/imgs/salad/large_cabinet_open.svg";
 
+//Pizza
+import EnvRoommate from "../assets/imgs/pizza/Environment-Roommate.svg";
+import PizzaFridgeOpen from "../assets/imgs/pizza/fridge_open.svg";
+import PizzaFridge from "../assets/imgs/pizza/fridge.svg";
+import PizzaUpperCabinetOpen from "../assets/imgs/pizza/upper_cabinet_open.svg";
+import PizzaUpperCabinet from "../assets/imgs/pizza/upper_cabinet.svg";
+import PizzaSinkOpen from "../assets/imgs/pizza/sink_cabinet_open.svg";
+import PizzaSink from "../assets/imgs/pizza/sink_cabinet.svg";
+import PizzaMiddleCabinetOpen from "../assets/imgs/pizza/top_middle_cabinet_open.svg";
+import PizzaMiddleCabinet from "../assets/imgs/pizza/top_middle_cabinet.svg";
+import Cheese from "../assets/imgs/pizza/Cheese.svg";
+import Dough from "../assets/imgs/pizza/dough.svg";
+import Pumpkin from "../assets/imgs/pizza/pumpkin.svg";
+import PumpkinMag from "../assets/imgs/pizza/pumpkin_mag.svg";
+import Takeout from "../assets/imgs/pizza/takeout.svg";
+import Pepperoni from "../assets/imgs/pizza/pepperoni.svg";
+import PepperoniMag from "../assets/imgs/pizza/pepperoni_mag.svg";
+import Tomato from "../assets/imgs/pizza/tomato.svg";
+import EmmaHuman from "../assets/imgs/pizza/roommate1.png";
+import EmmaHalfZombie from "../assets/imgs/pizza/roommate2.png";
+import EmmaZombie from "../assets/imgs/pizza/roommate3.png";
 
 const images = {
   Pot: Pot,
@@ -66,6 +87,26 @@ const images = {
   FridgeOpen: FridgeOpen,
   KitchenSinkOpen: KitchenSinkOpen,
   LargeCabinetOpen: LargeCabinetOpen,
+  PizzaFridgeOpen: PizzaFridgeOpen,
+  PizzaFridge: PizzaFridge,
+  PizzaUpperCabinetOpen: PizzaUpperCabinetOpen,
+  PizzaUpperCabinet: PizzaUpperCabinet,
+  PizzaSinkOpen: PizzaSinkOpen,
+  PizzaSink: PizzaSink,
+  PizzaMiddleCabinetOpen: PizzaMiddleCabinetOpen,
+  PizzaMiddleCabinet: PizzaMiddleCabinet,
+  Cheese: Cheese,
+  Dough: Dough,
+  Pumpkin: Pumpkin,
+  PumpkinMag: PumpkinMag,
+  Tomato: Tomato,
+  Takeout: Takeout,
+  Pepperoni: Pepperoni,
+  PepperoniMag: PepperoniMag,
+  EnvRoommate: EnvRoommate,
+  EmmaHuman: EmmaHuman,
+  EmmaHalfZombie: EmmaHalfZombie,
+  EmmaZombie: EmmaZombie,
 };
 
 export default images;

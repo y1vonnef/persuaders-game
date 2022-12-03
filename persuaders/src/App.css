@@ -5,8 +5,7 @@
 
 .App-logo {
   height: 40vmin;
-  pointer-events:
-  none;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -41,10 +40,14 @@
 
 .center {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  /* left: 50%; */
+  top: 380px;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  left: 550px;
+  width: 1000px;
+  height: 600px;
+  text-align: center;
 }
 
 #background-img {
@@ -90,7 +93,7 @@
 }
 
 #cauldron-img {
-    width: 185px;
+  width: 185px;
 }
 
 .cauldron-cook {
@@ -112,6 +115,17 @@
   background-color: white;
   padding: 40px;
   display: none;
+}
+
+.inspector button {
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.inspector-img {
+  width: 300px;
 }
 
 #recipe {
@@ -137,4 +151,35 @@ button {
 #cook-inventory {
   margin: 0px;
   padding: 0px;
+}
+
+.character {
+  position: absolute;
+  width: 150px;
+  top: 120px;
+  left: 320px;
+  z-index: 10;
+}
+
+.narrative {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: white 3px solid;
+  padding: 20px;
+  border-radius: 8px;
+  bottom: 100px;
+  text-align: center;
+  width: 1000px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 550px;
+  font-size: 18px;
+}
+
+.narrative button {
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  cursor: pointer;
 }
