@@ -6,6 +6,7 @@ const Pizza = {
   cook: {
     unlit: images.Pot,
     lit: images.PotLit,
+    top: images.PotTop,
     x: "585px",
     y: "273px",
     width: "185px"

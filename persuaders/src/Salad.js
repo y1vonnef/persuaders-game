@@ -6,6 +6,7 @@ const Salad = {
   cook: {
     unlit: images.Bowl,
     lit: images.BowlLit,
+    top: images.BowlTop,
     x: "618px",
     y: "213px",
     width: "105px"

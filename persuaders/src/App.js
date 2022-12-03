@@ -25,7 +25,7 @@ function App() {
 
   const [recipe, setRecipe] = useState("");
 
-  const [current, setCurrent] = useState(Pizza);
+  const [current, setCurrent] = useState(Salad);
 
   const [collected, setCollected] = useState([]);
 
@@ -43,7 +43,6 @@ function App() {
       tempIngredients = [...ingredientsIn];
       tempIngredients.push(ingredient);
       setIngredients(tempIngredients);
-      console.log("ingredients in pot are " + ingredientsIn);
     }
   };
 
@@ -51,11 +50,11 @@ function App() {
     return (
       <>
         <div className="cauldron-cook">
-          <img src={images.PotLit} />
+          <img src={current.cook.top} style={{paddingTop:"20px"}} />
           {ingredientsIn.map((item, index) => {
             return (
-              <div key={index}>
-                <img src={item} />
+              <div className="cooking-positions" key={index}>
+                <img className="cooking-positions" src={item} style={{ left: (Math.random() * (380 -140) + 140), top: (Math.random() * (-240 + 480) - 480) }} />
               </div>
             );
           })}
@@ -91,9 +90,6 @@ function App() {
   };
 
   function areEqual(array1, array2) {
-    console.log(array1);
-    console.log(array2);
-
     if (array1.length === array2.length) {
       return array1.every((element) => {
         if (array2.includes(element)) {
@@ -115,7 +111,6 @@ function App() {
   };
 
   const ViewRecipe = () => {
-    console.log(images.recipeImg);
     return <img class="center" id="recipe" src={images.Recipe} />;
   };
 
@@ -150,12 +145,12 @@ function App() {
   };
 
   const storageClick = (name, ingredients) => {
-    console.log(name);
-    document.getElementById(name).style.display = "none";
-    document.getElementById(name + "_open").style.display = "block";
-    for (let i = 0; i < ingredients.length; i++) {
-      console.log(document.getElementById(ingredients[i]));
-      document.getElementById(ingredients[i]).style.display = "block";
+    if (document.getElementById(name + "_open").style.display != "block") {
+        document.getElementById(name).style.display = "none";
+        document.getElementById(name + "_open").style.display = "block";
+        for (let i = 0; i < ingredients.length; i++) {
+          document.getElementById(ingredients[i]).style.display = "block";
+        }
     }
   };
 
@@ -221,7 +216,6 @@ function App() {
           })}
           <div className="img-container">
             {collected.map((item, i) => {
-              console.log(collected);
               return (
                 <img
                   className="inventory-item"

@@ -117,6 +117,12 @@
   z-index: 1000;
 }
 
+.cooking-positions {
+  display: flex;
+  position: absolute;
+  width: 35%;
+}
+
 .inspector {
   border: 1px solid black;
   z-index: 100;

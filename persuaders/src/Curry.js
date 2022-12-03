@@ -6,6 +6,7 @@ const Curry = {
   cook: {
     unlit: images.Pot,
     lit: images.PotLit,
+    top: images.PotTop,
     x: "618px",
     y: "273px",
     width: "185px",
@@ -32,7 +33,7 @@ const Curry = {
       x: "-10px",
       y: "63px",
       width: "400px",
-      ingredients: ["apple"],
+      ingredients: ["apple", "banana"],
     },
     {
       name: "lower_cabinet",
@@ -106,9 +107,8 @@ const Curry = {
       name: "banana",
       image: images.Banana,
       imageMag: images.BananaMag,
-
-      x: "720px",
-      y: "246px",
+      x: "220px",
+      y: "418px",
       title: "A bruised banana",
       text: "We can cut off the brown parts and eat the rest.",
     },
