@@ -1,8 +1,10 @@
 import images from "./shared/imgs";
 
 const Pizza = {
+  name: "pizza",
   environment: images.EnvRoommate,
   inventorySize: 4,
+  recipe: images.PizzaRecipe,
   cook: {
     unlit: images.Pot,
     lit: images.PotLit,
@@ -10,6 +12,10 @@ const Pizza = {
     x: "585px",
     y: "273px",
     width: "185px",
+    leftMin: 140,
+    leftMax: 380,
+    topMin: -480,
+    topMax: -240,
   },
   winningRecipe: [images.Takeout, images.Tomato, images.Dough, images.Cheese],
   winMsg:
@@ -22,7 +28,7 @@ const Pizza = {
     halfZombie: images.EmmaHalfZombie,
     zombie: images.EmmaZombie,
     x: "320px",
-    y: "120px",
+    y: "285px",
   },
   textList: [
     "Oh no! Your roommate Emma  turned into a zombie!",
@@ -127,6 +133,7 @@ const Pizza = {
       text: "Oh no, this is so sad, the pepperoni has gone bad. We will have to find another way to add protein to our pizza.",
     },
   ],
+  nextLevel: "done",
 };
 
 export default Pizza;

@@ -30,6 +30,7 @@ import Recipe from "../assets/imgs/curry/recipe_book.svg";
 import HiroHuman from "../assets/imgs/curry/hiro_human.png";
 import HiroHalfZombie from "../assets/imgs/curry/hiro_half_zombie.png";
 import HiroZombie from "../assets/imgs/curry/hiro_zombie.png";
+import CurryRecipe from "../assets/imgs/curry/recipe.svg";
 
 //Salad
 import EnvMatt from "../assets/imgs/salad/environment_matt.svg";
@@ -53,6 +54,7 @@ import Bread from "../assets/imgs/salad/bread.svg";
 import MattHuman from "../assets/imgs/salad/matt_human.png";
 import MattHalfZombie from "../assets/imgs/salad/matt_half_zombie.png";
 import MattZombie from "../assets/imgs/salad/matt_zombie.png";
+import SaladRecipe from "../assets/imgs/salad/recipe.svg";
 
 //Pizza
 import EnvRoommate from "../assets/imgs/pizza/Environment-Roommate.svg";
@@ -75,6 +77,7 @@ import Tomato from "../assets/imgs/pizza/tomato.svg";
 import EmmaHuman from "../assets/imgs/pizza/roommate1.png";
 import EmmaHalfZombie from "../assets/imgs/pizza/roommate2.png";
 import EmmaZombie from "../assets/imgs/pizza/roommate3.png";
+import PizzaRecipe from "../assets/imgs/pizza/recipe.svg";
 
 const images = {
   Pot: Pot,
@@ -109,6 +112,7 @@ const images = {
   HiroHuman: HiroHuman,
   HiroHalfZombie: HiroHalfZombie,
   HiroZombie: HiroZombie,
+  CurryRecipe: CurryRecipe,
 
   //Salad - Matt
   EnvMatt: EnvMatt,
@@ -132,6 +136,7 @@ const images = {
   MattHuman: MattHuman,
   MattHalfZombie: MattHalfZombie,
   MattZombie: MattZombie,
+  SaladRecipe: SaladRecipe,
 
   //Pizza - Emma
   PizzaFridgeOpen: PizzaFridgeOpen,
@@ -154,6 +159,7 @@ const images = {
   EmmaHuman: EmmaHuman,
   EmmaHalfZombie: EmmaHalfZombie,
   EmmaZombie: EmmaZombie,
+  PizzaRecipe: PizzaRecipe,
 };
 
 export default images;

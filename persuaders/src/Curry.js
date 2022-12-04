@@ -1,8 +1,11 @@
 import images from "./shared/imgs";
+import Salad from "./Salad.js";
 
 const Curry = {
+  name: "curry",
   environment: images.EnvHiro,
   inventorySize: 4,
+  recipe: images.CurryRecipe,
   cook: {
     unlit: images.Pot,
     lit: images.PotLit,
@@ -10,6 +13,10 @@ const Curry = {
     x: "618px",
     y: "273px",
     width: "185px",
+    leftMin: 140,
+    leftMax: 380,
+    topMin: -480,
+    topMax: -240,
   },
   winningRecipe: [images.Apple, images.Carrot, images.Potato, images.Curry],
   winMsg:
@@ -22,7 +29,7 @@ const Curry = {
     halfZombie: images.HiroHalfZombie,
     zombie: images.HiroZombie,
     x: "280px",
-    y: "250px",
+    y: "320px",
   },
   textList: [
     "Oh no! Our friend Hiro turned into a zombie!",
@@ -110,12 +117,13 @@ const Curry = {
       name: "banana",
       image: images.Banana,
       imageMag: images.BananaMag,
-      x: "220px",
+      x: "180px",
       y: "418px",
       title: "A bruised banana",
       text: "We can cut off the brown parts and eat the rest.",
     },
   ],
+  nextLevel: Salad,
 };
 
 export default Curry;

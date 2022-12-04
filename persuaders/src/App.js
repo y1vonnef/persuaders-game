@@ -9,25 +9,17 @@ import Pizza from "./Pizza.js";
 import Salad from "./Salad.js";
 import Curry from "./Curry.js";
 
-// for each level we need to specify: 1-inventory size; 2- winning answer; 3- story text; 4 - win text; 5 - recipe; 6 - fail text; 7 - pot position (it's diff for each level); 8 - pot img (need to fix pot!)
-
-const pizzaLevel = {
-  inventorySize: 4,
-  winningAnswer: ["dough", "cheese", "takeout", "tomato"],
-  potX: "590px",
-  potY: "273px",
-};
-
 function App() {
   const [cooking, setCooking] = useState(false);
 
   const [result, setResult] = useState("");
 
-  const [recipe, setRecipe] = useState("");
+  const [recipe, setRecipe] = useState(false);
 
-  const [current, setCurrent] = useState(Salad);
+  const [current, setCurrent] = useState(Curry);
 
   const [collected, setCollected] = useState([]);
+  const [collectedObject, setCollectedObject] = useState([]);
 
   const [emptyInventory, setEmptyInventory] = useState(
     Array(current.inventorySize).fill(0)
@@ -54,7 +46,8 @@ function App() {
           {ingredientsIn.map((item, index) => {
             return (
               <div className="cooking-positions" key={index}>
-                <img className="cooking-positions" src={item} style={{ left: (Math.random() * (380 -140) + 140), top: (Math.random() * (-240 + 480) - 480) }} />
+                <img className="cooking-positions" src={item} style={{ left: (Math.random() * (current.cook.leftMax - current.cook.leftMin) + current.cook.leftMin),
+                                                                       top: (Math.random() * (current.cook.topMax - current.cook.topMin) + current.cook.topMin) }} />
               </div>
             );
           })}
@@ -75,7 +68,7 @@ function App() {
             })}
           </div>
           {ingredientsIn.length === current.inventorySize ? (
-            <button
+            <button className="cook-button"
               id="cook-inventory"
               onClick={() => {
                 giveResults();
@@ -112,8 +105,16 @@ function App() {
     }
   };
 
-  const ViewRecipe = () => {
-    return <img class="center" id="recipe" src={images.Recipe} />;
+  const YouLost = () => {
+    return (
+      <>
+        <img
+          className="character popup-character"
+          src={current.character.halfZombie}
+        />
+        <div className="recipe-container ">{current.failMsg}</div>
+      </>
+    );
   };
 
   const YouWon = () => {
@@ -137,24 +138,32 @@ function App() {
     );
   };
 
-  const YouLost = () => {
-    return (
-      <>
-        <img
-          className="character popup-character"
-          src={current.character.halfZombie}
-        />
-        <div className="recipe-container ">{current.failMsg}</div>
-      </>
-    );
+  const ViewRecipe = () => {
+    setResult(null);
+    return <>
+            <img class="center" id="recipe" src={current.recipe} />
+            <button className="cook-button"
+              id="cook-inventory"
+              onClick={() => {
+                nextLevel();
+              }}
+            >
+              Start Next Level!
+            </button>
+           </>;
   };
 
-  const SetUp = () => {
-    if (current === "curry") {
-    } else if (current === "salad") {
-    } else {
+  function nextLevel() {
+    if(current.nextLevel != "done") {
+        setRecipe(false);
+        setEmptyInventory(Array(current.nextLevel.inventorySize).fill(0));
+        setCurrent(current.nextLevel);
+        setCollected([]);
+        setCollectedObject([]);
+        setIngredients([]);
+        setCharacterStatus("zombie");
     }
-  };
+  }
 
   const storageClick = (name, ingredients) => {
     if (document.getElementById(name + "_open").style.display != "block") {
@@ -172,17 +181,21 @@ function App() {
 
   const nevermind = (name) => {
     document.getElementById(name + "_popup").style.display = "none";
+    document.getElementById(name + "_reinspect").style.display = "none";
   };
 
-  const take = (name, image) => {
+  const take = (name, image, imageMag, title, text) => {
     document.getElementById(name).style.display = "none";
     let tempCollected = [...collected];
+    let tempCollectedObject = [...collectedObject];
     if (
       tempCollected.length < current.inventorySize &&
       !tempCollected.includes(image)
     ) {
+      tempCollectedObject.push(name);
       tempCollected.push(image);
     }
+    setCollectedObject(tempCollectedObject);
     setCollected(tempCollected);
     nevermind(name);
   };
@@ -240,11 +253,11 @@ function App() {
           <div className="img-container">
             {collected.map((item, i) => {
               return (
-                <img
-                  className="inventory-item"
-                  key={i}
-                  src={collected[i] !== undefined ? collected[i] : null}
-                />
+                  <img
+                    className="inventory-item"
+                    key={i}
+                    src={collected[i] !== undefined ? collected[i] : null}
+                  />
               );
             })}
           </div>
@@ -252,7 +265,7 @@ function App() {
         {current.storage.map((s, idx) => {
           return (
             <Storage
-              key={idx}
+              key={current.name + idx}
               name={s.name}
               open={s.open}
               closed={s.closed}

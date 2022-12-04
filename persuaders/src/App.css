@@ -106,13 +106,13 @@
 .cauldron-cook {
   width: 400px;
   height: 200px;
-  border-radius: 1000;
-  border: 1px solid black;
-  background-color: white;
+  border-radius: 8px;
+  border: white 5px solid;
+  background-color: rgba(255, 255, 255, 0.95);
   position: absolute;
   top: 10px;
-  height: 760px;
-  width: 1080px;
+  height: 750px;
+  width: 1070px;
   left: 10px;
   z-index: 1000;
 }
@@ -124,13 +124,22 @@
 }
 
 .inspector {
-  border: 1px solid black;
   z-index: 100;
   padding: 40px;
   display: none;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   border: white 5px solid;
   border-radius: 8px;
+}
+
+.cook-button {
+  position: absolute;
+  left: 800px;
+  display: block;
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .inspector button {
@@ -146,8 +155,9 @@
 
 #recipe {
   z-index: 1000;
-  width: 800px;
-  background: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: white 5px solid;
+  border-radius: 8px;
 }
 
 .recipe-container {
@@ -191,7 +201,7 @@ button {
 .narrative {
   position: absolute;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   border: white 5px solid;
   padding: 20px;
   border-radius: 8px;

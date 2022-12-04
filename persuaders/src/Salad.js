@@ -1,8 +1,11 @@
 import images from "./shared/imgs";
+import Pizza from "./Pizza.js";
 
 const Salad = {
+  name: "salad",
   environment: images.EnvMatt,
   inventorySize: 6,
+  recipe: images.SaladRecipe,
   cook: {
     unlit: images.Bowl,
     lit: images.BowlLit,
@@ -10,6 +13,10 @@ const Salad = {
     x: "618px",
     y: "213px",
     width: "105px",
+    leftMin: 300,
+    leftMax: 650,
+    topMin: -550,
+    topMax: -300,
   },
   winningRecipe: [
     images.Spinach,
@@ -30,7 +37,7 @@ const Salad = {
     halfZombie: images.MattHalfZombie,
     zombie: images.MattZombie,
     x: "280px",
-    y: "230px",
+    y: "290px",
   },
   textList: [
     "Oh no! Our friend Matt also got infected! He used to make himself a refreshing salad whenever he was not well.",
@@ -146,6 +153,7 @@ const Salad = {
       text: "Due to its acidic nature, it never expires. This can come in handy!",
     },
   ],
+  nextLevel: Pizza,
 };
 
 export default Salad;

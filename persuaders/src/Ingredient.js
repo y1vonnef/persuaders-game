@@ -44,7 +44,7 @@ class Ingredient extends Component {
           </button>
           <button
             onClick={() => {
-              this.props.take(this.props.name, this.props.image);
+              this.props.take(this.props.name, this.props.image, this.props.imageMag, this.props.title, this.props.text);
             }}
           >
             Take
