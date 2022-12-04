@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./App.css";
+import LevelContext from "./level-context";
 
 const Story = (props) => {
   const last = props.textList[props.textList.length - 1];
   const [text, setText] = useState(props.textList[0]);
   const [finished, setFinished] = useState(false);
+  const { setNewLevel } = useContext(LevelContext);
+
   function update() {
     var n = props.textList.indexOf(text);
     setText(props.textList[n + 1]);
@@ -13,6 +16,7 @@ const Story = (props) => {
 
   function hide() {
     setFinished(true);
+    setNewLevel(false);
     console.log(finished);
   }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./App.css";
 import images from "./shared/imgs";
 import Ingredient from "./Ingredient.js";
@@ -8,6 +8,8 @@ import Story from "./Story.js";
 import Pizza from "./Pizza.js";
 import Salad from "./Salad.js";
 import Curry from "./Curry.js";
+import { LevelContextProvider } from "./level-context";
+import LevelContext from "./level-context";
 
 function App() {
   const [cooking, setCooking] = useState(false);
@@ -29,6 +31,8 @@ function App() {
 
   const [ingredientsIn, setIngredients] = useState([]);
 
+  const [newLevel, setNewLevel] = useState(true);
+
   const moveToPot = (ingredient) => {
     if (!ingredientsIn.includes(ingredient)) {
       let tempIngredients = [];
@@ -42,12 +46,24 @@ function App() {
     return (
       <>
         <div className="cauldron-cook">
-          <img src={current.cook.top} style={{paddingTop:"20px"}} />
+          <img src={current.cook.top} style={{ paddingTop: "20px" }} />
           {ingredientsIn.map((item, index) => {
             return (
               <div className="cooking-positions" key={index}>
-                <img className="cooking-positions" src={item} style={{ left: (Math.random() * (current.cook.leftMax - current.cook.leftMin) + current.cook.leftMin),
-                                                                       top: (Math.random() * (current.cook.topMax - current.cook.topMin) + current.cook.topMin) }} />
+                <img
+                  className="cooking-positions"
+                  src={item}
+                  style={{
+                    left:
+                      Math.random() *
+                        (current.cook.leftMax - current.cook.leftMin) +
+                      current.cook.leftMin,
+                    top:
+                      Math.random() *
+                        (current.cook.topMax - current.cook.topMin) +
+                      current.cook.topMin,
+                  }}
+                />
               </div>
             );
           })}
@@ -68,7 +84,8 @@ function App() {
             })}
           </div>
           {ingredientsIn.length === current.inventorySize ? (
-            <button className="cook-button"
+            <button
+              className="cook-button"
               id="cook-inventory"
               onClick={() => {
                 giveResults();
@@ -95,6 +112,7 @@ function App() {
   }
 
   const giveResults = () => {
+    setNewLevel(false);
     setCooking(false);
     if (areEqual(collected, current.winningRecipe)) {
       setResult(true);
@@ -140,38 +158,42 @@ function App() {
 
   const ViewRecipe = () => {
     setResult(null);
-    return <>
-            <img class="center" id="recipe" src={current.recipe} />
-            <button className="cook-button"
-              id="cook-inventory"
-              onClick={() => {
-                nextLevel();
-              }}
-            >
-              Start Next Level!
-            </button>
-           </>;
+    return (
+      <>
+        <img class="center" id="recipe" src={current.recipe} />
+        <button
+          className="cook-button"
+          id="cook-inventory"
+          onClick={() => {
+            nextLevel();
+          }}
+        >
+          Start Next Level!
+        </button>
+      </>
+    );
   };
 
   function nextLevel() {
-    if(current.nextLevel != "done") {
-        setRecipe(false);
-        setEmptyInventory(Array(current.nextLevel.inventorySize).fill(0));
-        setCurrent(current.nextLevel);
-        setCollected([]);
-        setCollectedObject([]);
-        setIngredients([]);
-        setCharacterStatus("zombie");
+    if (current.nextLevel != "done") {
+      setRecipe(false);
+      setEmptyInventory(Array(current.nextLevel.inventorySize).fill(0));
+      setCurrent(current.nextLevel);
+      setCollected([]);
+      setCollectedObject([]);
+      setIngredients([]);
+      setCharacterStatus("zombie");
+      setNewLevel(true);
     }
   }
 
   const storageClick = (name, ingredients) => {
     if (document.getElementById(name + "_open").style.display != "block") {
-        document.getElementById(name).style.display = "none";
-        document.getElementById(name + "_open").style.display = "block";
-        for (let i = 0; i < ingredients.length; i++) {
-          document.getElementById(ingredients[i]).style.display = "block";
-        }
+      document.getElementById(name).style.display = "none";
+      document.getElementById(name + "_open").style.display = "block";
+      for (let i = 0; i < ingredients.length; i++) {
+        document.getElementById(ingredients[i]).style.display = "block";
+      }
     }
   };
 
@@ -234,72 +256,74 @@ function App() {
   };
 
   return (
-    <div>
-      <img id="background-img" src={current.environment} />
-      <div className="App">
-        <Story textList={current.textList} />
-        <Character
-          status={characterStatus}
-          human={current.character.human}
-          halfZombie={current.character.halfZombie}
-          zombie={current.character.zombie}
-          x={current.character.x}
-          y={current.character.y}
-        />
-        <div className="inventory-container">
-          {emptyInventory.map((item) => {
-            return <div className="inventory"></div>;
-          })}
-          <div className="img-container">
-            {collected.map((item, i) => {
-              return (
+    <LevelContextProvider>
+      <div>
+        <img id="background-img" src={current.environment} />
+        <div className="App">
+          {newLevel ? <Story textList={current.textList} /> : null}
+          <Character
+            status={characterStatus}
+            human={current.character.human}
+            halfZombie={current.character.halfZombie}
+            zombie={current.character.zombie}
+            x={current.character.x}
+            y={current.character.y}
+          />
+          <div className="inventory-container">
+            {emptyInventory.map((item) => {
+              return <div className="inventory"></div>;
+            })}
+            <div className="img-container">
+              {collected.map((item, i) => {
+                return (
                   <img
                     className="inventory-item"
                     key={i}
                     src={collected[i] !== undefined ? collected[i] : null}
                   />
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
+          {current.storage.map((s, idx) => {
+            return (
+              <Storage
+                key={current.name + idx}
+                name={s.name}
+                open={s.open}
+                closed={s.closed}
+                x={s.x}
+                y={s.y}
+                width={s.width}
+                storageClick={storageClick}
+                ingredients={s.ingredients}
+              />
+            );
+          })}
+          {current.ingredients.map((i, idx) => {
+            return (
+              <Ingredient
+                key={i.name}
+                name={i.name}
+                image={i.image}
+                imageMag={i.imageMag}
+                x={i.x}
+                y={i.y}
+                openPopup={openPopup}
+                nevermind={nevermind}
+                take={take}
+                title={i.title}
+                text={i.text}
+              />
+            );
+          })}
+          <Cauldron />
+          {cooking === true ? <CookPopUp /> : null}
+          {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
+          {recipe === true ? <ViewRecipe /> : null}
         </div>
-        {current.storage.map((s, idx) => {
-          return (
-            <Storage
-              key={current.name + idx}
-              name={s.name}
-              open={s.open}
-              closed={s.closed}
-              x={s.x}
-              y={s.y}
-              width={s.width}
-              storageClick={storageClick}
-              ingredients={s.ingredients}
-            />
-          );
-        })}
-        {current.ingredients.map((i, idx) => {
-          return (
-            <Ingredient
-              key={i.name}
-              name={i.name}
-              image={i.image}
-              imageMag={i.imageMag}
-              x={i.x}
-              y={i.y}
-              openPopup={openPopup}
-              nevermind={nevermind}
-              take={take}
-              title={i.title}
-              text={i.text}
-            />
-          );
-        })}
-        <Cauldron />
-        {cooking === true ? <CookPopUp /> : null}
-        {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
-        {recipe === true ? <ViewRecipe /> : null}
       </div>
-    </div>
+    </LevelContextProvider>
   );
 }
 
