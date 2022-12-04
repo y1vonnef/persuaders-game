@@ -130,7 +130,18 @@ function App() {
           className="character popup-character"
           src={current.character.halfZombie}
         />
-        <div className="recipe-container ">{current.failMsg}</div>
+        <div className="recipe-container ">
+          {current.failMsg}
+          <button
+            className="cook-button"
+            id="cook-inventory"
+            onClick={() => {
+              nextLevel();
+            }}
+          >
+            Start Next Level!
+          </button>
+        </div>
       </>
     );
   };
@@ -176,6 +187,7 @@ function App() {
 
   function nextLevel() {
     if (current.nextLevel != "done") {
+      setResult(null);
       setRecipe(false);
       setEmptyInventory(Array(current.nextLevel.inventorySize).fill(0));
       setCurrent(current.nextLevel);
