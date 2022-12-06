@@ -95,8 +95,6 @@
   left: 618px;
   top: 273px;
   position: absolute;
-  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
-  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
 }
 
 #cauldron-img {
@@ -115,6 +113,12 @@
   width: 1070px;
   left: 10px;
   z-index: 1000;
+}
+
+.lightup img:hover {
+  cursor: pointer;
+  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
 }
 
 .cooking-positions {
@@ -248,4 +252,16 @@ button {
 .img-container {
   display: flex;
   position: absolute;
+}
+
+.ingredient img:hover {
+  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  cursor: pointer;
+}
+
+.storage img:hover {
+  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  cursor: pointer;
 }
