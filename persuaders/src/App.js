@@ -10,6 +10,7 @@ import Salad from "./Salad.js";
 import Curry from "./Curry.js";
 import { LevelContextProvider } from "./level-context";
 import LevelContext from "./level-context";
+import Confetti from "react-confetti";
 
 function App() {
   const [cooking, setCooking] = useState(false);
@@ -149,6 +150,7 @@ function App() {
   const YouWon = () => {
     return (
       <>
+        <Confetti width={1100} height={782.217} />
         <img
           className="character popup-character"
           src={current.character.human}
