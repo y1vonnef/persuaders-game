@@ -17,7 +17,6 @@ const Story = (props) => {
   function hide() {
     setFinished(true);
     setNewLevel(false);
-    console.log(finished);
   }
 
   return (

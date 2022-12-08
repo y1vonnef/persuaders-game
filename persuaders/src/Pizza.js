@@ -5,6 +5,7 @@ const Pizza = {
   environment: images.EnvRoommate,
   inventorySize: 4,
   recipe: images.PizzaRecipe,
+  reminder: false,
   cook: {
     unlit: images.Pot,
     lit: images.PotLit,

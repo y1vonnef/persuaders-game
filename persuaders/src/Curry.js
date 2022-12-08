@@ -6,6 +6,7 @@ const Curry = {
   environment: images.EnvHiro,
   inventorySize: 4,
   recipe: images.CurryRecipe,
+  reminder: "Reminder: Click on ingredients to inspect them, only take what you want to cook!",
   cook: {
     unlit: images.Pot,
     lit: images.PotLit,

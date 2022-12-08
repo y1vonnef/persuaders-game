@@ -13,6 +13,8 @@ import LevelContext from "./level-context";
 import Confetti from "react-confetti";
 
 function App() {
+  const [intro, setIntro] = useState(true);
+
   const [cooking, setCooking] = useState(false);
 
   const [result, setResult] = useState("");
@@ -33,6 +35,36 @@ function App() {
   const [ingredientsIn, setIngredients] = useState([]);
 
   const [newLevel, setNewLevel] = useState(true);
+
+  const ShowIntro = () => {
+    return(
+        <div>
+            <img id="intro" src={images.Intro} />
+            <div id="intro-text">
+                <p>Aah it’s a zombie apocalypse!!!</p>
+                <p>You are the lone survivor. One day a zombie gets a little too close and steals a bite of your dinner and you see them start to heal! You start to travel around the city, making zombies their favorite meals to turn them back to humans.</p>
+            </div>
+            <button
+                className="start-next"
+                onClick={() => {
+                  setIntro(false);
+                }}
+            >
+                Start First Level!
+             </button>
+        </div>
+    );
+  };
+
+  const Reminder = () => {
+    if (current.reminder != false) {
+        return(
+            <div id="reminder">
+                {current.reminder}
+            </div>
+        );
+    }
+  };
 
   const moveToPot = (ingredient) => {
     if (!ingredientsIn.includes(ingredient)) {
@@ -134,8 +166,7 @@ function App() {
         <div className="recipe-container ">
           {current.failMsg}
           <button
-            className="cook-button"
-            id="cook-inventory"
+            className="start-next"
             onClick={() => {
               nextLevel();
             }}
@@ -160,6 +191,7 @@ function App() {
           <button
             onClick={() => {
               setRecipe(true);
+              setResult(null);
             }}
           >
             View Recipe!
@@ -170,13 +202,11 @@ function App() {
   };
 
   const ViewRecipe = () => {
-    setResult(null);
     return (
       <>
-        <img class="center" id="recipe" src={current.recipe} />
+        <img className="center" id="recipe" src={current.recipe} />
         <button
-          className="cook-button"
-          id="cook-inventory"
+          className="start-next"
           onClick={() => {
             nextLevel();
           }}
@@ -217,7 +247,6 @@ function App() {
 
   const nevermind = (name) => {
     document.getElementById(name + "_popup").style.display = "none";
-    document.getElementById(name + "_reinspect").style.display = "none";
   };
 
   const take = (name, image, imageMag, title, text) => {
@@ -271,10 +300,11 @@ function App() {
 
   return (
     <LevelContextProvider>
-      <div>
+        {intro === true ? <ShowIntro /> : ( <div>
         <img id="background-img" src={current.environment} />
         <div className="App">
           {newLevel ? <Story textList={current.textList} /> : null}
+          <Reminder />
           <Character
             status={characterStatus}
             human={current.character.human}
@@ -337,6 +367,7 @@ function App() {
           {recipe === true ? <ViewRecipe /> : null}
         </div>
       </div>
+      )}
     </LevelContextProvider>
   );
 }

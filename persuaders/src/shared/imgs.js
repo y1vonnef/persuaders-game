@@ -4,6 +4,7 @@ import PotTop from "../assets/imgs/pot_top_normal.png";
 import Bowl from "../assets/imgs/bowl_normal.png";
 import BowlLit from "../assets/imgs/bowl_lit.png";
 import BowlTop from "../assets/imgs/bowl_top_normal.png";
+import Intro from "../assets/imgs/intro_background.svg";
 
 //Curry
 import EnvHiro from "../assets/imgs/curry/environment_hiro.svg";
@@ -86,6 +87,7 @@ const images = {
   Bowl: Bowl,
   BowlLit: BowlLit,
   BowlTop: BowlTop,
+  Intro: Intro,
 
   //Curry - Hiro
   Apple: Apple,

@@ -6,6 +6,7 @@ const Salad = {
   environment: images.EnvMatt,
   inventorySize: 6,
   recipe: images.SaladRecipe,
+  reminder: "Reminder: greens, something sweet, and savory. Dressing: sweet, sour and smooth",
   cook: {
     unlit: images.Bowl,
     lit: images.BowlLit,
