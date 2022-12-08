@@ -37,32 +37,33 @@ function App() {
   const [newLevel, setNewLevel] = useState(true);
 
   const ShowIntro = () => {
-    return(
-        <div>
-            <img id="intro" src={images.Intro} />
-            <div id="intro-text">
-                <p>Aah it’s a zombie apocalypse!!!</p>
-                <p>You are the lone survivor. One day a zombie gets a little too close and steals a bite of your dinner and you see them start to heal! You start to travel around the city, making zombies their favorite meals to turn them back to humans.</p>
-            </div>
-            <button
-                className="start-next"
-                onClick={() => {
-                  setIntro(false);
-                }}
-            >
-                Start First Level!
-             </button>
+    return (
+      <div>
+        <img id="intro" src={images.Intro} />
+        <div id="intro-text">
+          <p>Aah it’s a zombie apocalypse!!!</p>
+          <p>
+            You are the lone survivor. One day a zombie gets a little too close
+            and steals a bite of your dinner and you see them start to heal! You
+            start to travel around the city, making zombies their favorite meals
+            to turn them back to humans.
+          </p>
         </div>
+        <button
+          className="start-next"
+          onClick={() => {
+            setIntro(false);
+          }}
+        >
+          Start First Level!
+        </button>
+      </div>
     );
   };
 
   const Reminder = () => {
     if (current.reminder != false) {
-        return(
-            <div id="reminder">
-                {current.reminder}
-            </div>
-        );
+      return <div id="reminder">{current.reminder}</div>;
     }
   };
 
@@ -236,7 +237,15 @@ function App() {
       document.getElementById(name).style.display = "none";
       document.getElementById(name + "_open").style.display = "block";
       for (let i = 0; i < ingredients.length; i++) {
-        document.getElementById(ingredients[i]).style.display = "block";
+        let ingredientImg;
+        for (let j = 0; j < current.ingredients.length; j++) {
+          console.log(current.ingredients[0].name);
+          console.log(ingredients[0]);
+          if (current.ingredients[j].name === ingredients[i]) {
+            ingredientImg = current.ingredients[j].image;
+          }
+        }
+        document.getElementById(ingredientImg).style.display = "block";
       }
     }
   };
@@ -249,8 +258,29 @@ function App() {
     document.getElementById(name + "_popup").style.display = "none";
   };
 
+  const openRemove = (name) => {
+    console.log(name + "_remove");
+    document.getElementById(name + "_remove").style.display = "block";
+  };
+
+  const closeRemove = (name) => {
+    document.getElementById(name + "_remove").style.display = "none";
+  };
+
+  const putBack = (name) => {
+    //take name/img src out of collected
+    let index = collected.indexOf(name);
+    console.log(collected);
+    console.log(name);
+    let tempCollected = [...collected];
+    tempCollected.splice(index, 1);
+    setCollected(tempCollected);
+    document.getElementById(name + "_remove").style.display = "none";
+    document.getElementById(name).style.display = "block";
+  };
+
   const take = (name, image, imageMag, title, text) => {
-    document.getElementById(name).style.display = "none";
+    document.getElementById(image).style.display = "none";
     let tempCollected = [...collected];
     let tempCollectedObject = [...collectedObject];
     if (
@@ -300,73 +330,88 @@ function App() {
 
   return (
     <LevelContextProvider>
-        {intro === true ? <ShowIntro /> : ( <div>
-        <img id="background-img" src={current.environment} />
-        <div className="App">
-          {newLevel ? <Story textList={current.textList} /> : null}
-          <Reminder />
-          <Character
-            status={characterStatus}
-            human={current.character.human}
-            halfZombie={current.character.halfZombie}
-            zombie={current.character.zombie}
-            x={current.character.x}
-            y={current.character.y}
-          />
-          <div className="inventory-container">
-            {emptyInventory.map((item) => {
-              return <div className="inventory"></div>;
-            })}
-            <div className="img-container">
-              {collected.map((item, i) => {
-                return (
-                  <img
-                    className="inventory-item"
-                    key={i}
-                    src={collected[i] !== undefined ? collected[i] : null}
-                  />
-                );
+      {intro === true ? (
+        <ShowIntro />
+      ) : (
+        <div>
+          <img id="background-img" src={current.environment} />
+          <div className="App">
+            {newLevel ? <Story textList={current.textList} /> : null}
+            <Reminder />
+            <Character
+              status={characterStatus}
+              human={current.character.human}
+              halfZombie={current.character.halfZombie}
+              zombie={current.character.zombie}
+              x={current.character.x}
+              y={current.character.y}
+            />
+            <div className="inventory-container">
+              {emptyInventory.map((item) => {
+                return <div className="inventory"></div>;
               })}
+              <div className="img-container">
+                {collected.map((item, i) => {
+                  return (
+                    <button
+                      onClick={() => {
+                        openRemove(item);
+                      }}
+                    >
+                      <img
+                        className="inventory-item"
+                        key={i}
+                        src={collected[i] !== undefined ? collected[i] : null}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
             </div>
+            {current.storage.map((s, idx) => {
+              return (
+                <Storage
+                  key={current.name + idx}
+                  name={s.name}
+                  open={s.open}
+                  closed={s.closed}
+                  x={s.x}
+                  y={s.y}
+                  width={s.width}
+                  storageClick={storageClick}
+                  ingredients={s.ingredients}
+                />
+              );
+            })}
+            {current.ingredients.map((i, idx) => {
+              return (
+                <Ingredient
+                  key={i.name}
+                  name={i.name}
+                  image={i.image}
+                  imageMag={i.imageMag}
+                  x={i.x}
+                  y={i.y}
+                  openPopup={openPopup}
+                  nevermind={nevermind}
+                  putBack={putBack}
+                  closeRemove={closeRemove}
+                  take={take}
+                  title={i.title}
+                  text={i.text}
+                />
+              );
+            })}
+            <Cauldron />
+            {cooking === true ? <CookPopUp /> : null}
+            {result === true ? (
+              <YouWon />
+            ) : result === false ? (
+              <YouLost />
+            ) : null}
+            {recipe === true ? <ViewRecipe /> : null}
           </div>
-          {current.storage.map((s, idx) => {
-            return (
-              <Storage
-                key={current.name + idx}
-                name={s.name}
-                open={s.open}
-                closed={s.closed}
-                x={s.x}
-                y={s.y}
-                width={s.width}
-                storageClick={storageClick}
-                ingredients={s.ingredients}
-              />
-            );
-          })}
-          {current.ingredients.map((i, idx) => {
-            return (
-              <Ingredient
-                key={i.name}
-                name={i.name}
-                image={i.image}
-                imageMag={i.imageMag}
-                x={i.x}
-                y={i.y}
-                openPopup={openPopup}
-                nevermind={nevermind}
-                take={take}
-                title={i.title}
-                text={i.text}
-              />
-            );
-          })}
-          <Cauldron />
-          {cooking === true ? <CookPopUp /> : null}
-          {result === true ? <YouWon /> : result === false ? <YouLost /> : null}
-          {recipe === true ? <ViewRecipe /> : null}
         </div>
-      </div>
       )}
     </LevelContextProvider>
   );

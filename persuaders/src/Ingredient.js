@@ -18,7 +18,7 @@ class Ingredient extends Component {
     return (
       <div>
         <div
-          id={this.props.name}
+          id={this.props.image}
           className="ingredient"
           style={{ left: this.props.x, top: this.props.y, display: "none" }}
         >
@@ -44,10 +44,35 @@ class Ingredient extends Component {
           </button>
           <button
             onClick={() => {
-              this.props.take(this.props.name, this.props.image, this.props.imageMag, this.props.title, this.props.text);
+              this.props.take(
+                this.props.name,
+                this.props.image,
+                this.props.imageMag,
+                this.props.title,
+                this.props.text
+              );
             }}
           >
             Take
+          </button>
+        </div>
+        <div id={this.props.image + "_remove"} className="center inspector">
+          <img className="inspector-img" src={this.props.imageMag} />
+          <h1>{this.props.title}</h1>
+          <p>{this.props.text}</p>
+          <button
+            onClick={() => {
+              this.props.putBack(this.props.image);
+            }}
+          >
+            Put Back
+          </button>
+          <button
+            onClick={() => {
+              this.props.closeRemove(this.props.image);
+            }}
+          >
+            Nevermind
           </button>
         </div>
       </div>

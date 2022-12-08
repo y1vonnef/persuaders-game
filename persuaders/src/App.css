@@ -27,7 +27,7 @@
   text-align: center;
   font-size: 25px;
   width: 900px;
-  height: 30px;
+  height: auto;
   border-radius: 8px;
   border: white 5px solid;
   background-color: rgba(255, 255, 255, 0.6);
@@ -35,6 +35,7 @@
   top: 10px;
   left: 95px;
   padding: 5px;
+  z-index: 2;
 }
 
 .start-next {
@@ -255,13 +256,19 @@ button {
 }
 
 .inventory-item {
-  width: 79px;
-  height: 79px;
+  width: 75px;
+  height: 75px;
 }
 
 .img-container {
   display: flex;
   position: absolute;
+}
+
+.img-container button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
 }
 
 .ingredient img:hover {
